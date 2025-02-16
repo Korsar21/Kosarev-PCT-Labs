@@ -1,20 +1,19 @@
 cmake_minimum_required(VERSION 3.23)
 
-set(project "mymath")
+set(project "lab1")
 project(${project})
 
 set(CMAKE_CXX_STANDARD 17)
 
 set(${project}_SOURCES
-        mymath.cpp)
+        main.cpp)
 
-set(${project}_HEADERS
-        mymath.h)
+add_subdirectory(mymath)
 
 set(${project}_SOURCE_LIST
-        ${${project}_SOURCES}
-        ${${project}_HEADERS})
+        ${${project}_SOURCES})
 
-add_library(${project}
-        STATIC
+add_executable(${project}
         ${${project}_SOURCE_LIST})
+
+target_link_libraries(${project} mymath)
