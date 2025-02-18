@@ -1,6 +1,6 @@
-#include "mymath.h"
+#include "mymath2.h"
 
-namespace mymath {
+namespace mymath2 {
     int multiplication(int a, int b) {
         return a * b;
     }
