@@ -1,9 +1,3 @@
-/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/lab_1.dir
+/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/lab_1_2.dir
 /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/edit_cache.dir
 /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/rebuild_cache.dir
-/home/korsar/Kosarev-PCT-Labs/build/mymath/CMakeFiles/mymath.dir
-/home/korsar/Kosarev-PCT-Labs/build/mymath/CMakeFiles/edit_cache.dir
-/home/korsar/Kosarev-PCT-Labs/build/mymath/CMakeFiles/rebuild_cache.dir
-/home/korsar/Kosarev-PCT-Labs/build/mymath2/CMakeFiles/mymath2.dir
-/home/korsar/Kosarev-PCT-Labs/build/mymath2/CMakeFiles/edit_cache.dir
-/home/korsar/Kosarev-PCT-Labs/build/mymath2/CMakeFiles/rebuild_cache.dir

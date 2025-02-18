@@ -1,12 +1,22 @@
-cmake_minimum_required(VERSION 3.10)
-project(lab_1)
+cmake_minimum_required(VERSION 3.23)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(project "lab_1_2")
+project(${project})
 
-add_subdirectory(mymath)
-add_subdirectory(mymath2)
+set(CMAKE_CXX_STANDARD 17)
 
-add_executable(lab_1 main.cpp)
+include_directories(${CMAKE_SOURCE_DIR}/include)
 
-target_link_libraries(lab_1 mymath mymath2)
+link_directories(${CMAKE_SOURCE_DIR}/lib)
+
+set(${project}_SOURCES
+        main.cpp)
+
+set(${project}_SOURCE_LIST
+        ${${project}_SOURCES})
+
+add_executable(${project}
+        ${${project}_SOURCE_LIST})
+
+target_link_libraries(${project}
+    mymath2)

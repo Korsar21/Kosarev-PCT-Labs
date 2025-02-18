@@ -117,50 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named lab_1
+# Target rules for targets named lab_1_2
 
 # Build rule for target.
-lab_1: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab_1
-.PHONY : lab_1
+lab_1_2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab_1_2
+.PHONY : lab_1_2
 
 # fast build rule for target.
-lab_1/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/build
-.PHONY : lab_1/fast
-
-#=============================================================================
-# Target rules for targets named mymath
-
-# Build rule for target.
-mymath: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mymath
-.PHONY : mymath
-
-# fast build rule for target.
-mymath/fast:
-	$(MAKE) $(MAKESILENT) -f mymath/CMakeFiles/mymath.dir/build.make mymath/CMakeFiles/mymath.dir/build
-.PHONY : mymath/fast
-
-#=============================================================================
-# Target rules for targets named mymath2
-
-# Build rule for target.
-mymath2: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mymath2
-.PHONY : mymath2
-
-# fast build rule for target.
-mymath2/fast:
-	$(MAKE) $(MAKESILENT) -f mymath2/CMakeFiles/mymath2.dir/build.make mymath2/CMakeFiles/mymath2.dir/build
-.PHONY : mymath2/fast
+lab_1_2/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_1_2.dir/build.make CMakeFiles/lab_1_2.dir/build
+.PHONY : lab_1_2/fast
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_1_2.dir/build.make CMakeFiles/lab_1_2.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -168,7 +142,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_1_2.dir/build.make CMakeFiles/lab_1_2.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -176,7 +150,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_1_2.dir/build.make CMakeFiles/lab_1_2.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -187,9 +161,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... lab_1"
-	@echo "... mymath"
-	@echo "... mymath2"
+	@echo "... lab_1_2"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

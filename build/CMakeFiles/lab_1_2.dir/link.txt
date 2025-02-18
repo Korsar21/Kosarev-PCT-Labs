@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/lab_1_2.dir/link.d CMakeFiles/lab_1_2.dir/main.cpp.o -o lab_1_2   -L/home/korsar/Kosarev-PCT-Labs/lib  -Wl,-rpath,/home/korsar/Kosarev-PCT-Labs/lib -lmymath2

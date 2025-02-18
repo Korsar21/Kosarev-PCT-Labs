@@ -1,10 +1,9 @@
-lab_1: \
+lab_1_2: \
   /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o \
   /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o \
   /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o \
-  CMakeFiles/lab_1.dir/main.cpp.o \
-  mymath/libmymath.a \
-  mymath2/libmymath2.a \
+  CMakeFiles/lab_1_2.dir/main.cpp.o \
+  /home/korsar/Kosarev-PCT-Labs/lib/libmymath2.a \
   /usr/lib/gcc/x86_64-linux-gnu/13/libstdc++.so \
   /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libm.so \
   /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libm.so \
@@ -41,11 +40,9 @@ lab_1: \
 
 /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o:
 
-CMakeFiles/lab_1.dir/main.cpp.o:
+CMakeFiles/lab_1_2.dir/main.cpp.o:
 
-mymath/libmymath.a:
-
-mymath2/libmymath2.a:
+/home/korsar/Kosarev-PCT-Labs/lib/libmymath2.a:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/libstdc++.so:
 
