@@ -1,0 +1,10 @@
+/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/lab_2.dir
+/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/clang-format.dir
+/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/edit_cache.dir
+/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/rebuild_cache.dir
+/home/korsar/Kosarev-PCT-Labs/build/planet/CMakeFiles/planet.dir
+/home/korsar/Kosarev-PCT-Labs/build/planet/CMakeFiles/edit_cache.dir
+/home/korsar/Kosarev-PCT-Labs/build/planet/CMakeFiles/rebuild_cache.dir
+/home/korsar/Kosarev-PCT-Labs/build/ticket/CMakeFiles/ticket.dir
+/home/korsar/Kosarev-PCT-Labs/build/ticket/CMakeFiles/edit_cache.dir
+/home/korsar/Kosarev-PCT-Labs/build/ticket/CMakeFiles/rebuild_cache.dir

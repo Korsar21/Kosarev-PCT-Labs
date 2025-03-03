@@ -1,28 +1,37 @@
-#include "planet.h"
+#include <fstream>
 #include <iostream>
+#include "ticket/libTicket.hpp"
+#include "planet/libPlanet.hpp"
+#include "planet.hpp"
 
 int main() {
-    Planet* planets = nullptr;
+    int choice = choiceLib();
     int count = 0;
+    Planet* planetDataBase = nullptr;
+    Ticket* ticketDataBase = nullptr;
+    const char* filename;
 
-    Planet::readFromFile("planets.txt", planets, count);
+    switch (choice) {
+        case 1: {
+            filename = "planets.txt";
+            planetSpace::switchPlanet(planetDataBase, count, filename);
+            break;
+        }
+        case 2: {
+            filename = "tickets.txt";
+            ticketSpace::switchTicket(ticketDataBase, count, filename);
+            break;
+        }
+        default:
+            std::cout << "Некорректный выбор.\n";
+            return 1;
+    }
 
-    Planet::printPlanets(planets, count);
-
-    Planet newPlanet("NewPlanet", 10000, true, 3);
-    Planet::addPlanet(planets, count, newPlanet);
-
-    Planet::sortPlanets(planets, count);
-
-    Planet::printPlanets(planets, count);
-
-    Planet::removePlanet(planets, count, 1);
-
-    Planet::editPlanet(planets, count, 0);
-
-    Planet::writeToFile("planets_output.txt", planets, count);
-
-    delete[] planets;
+    if (choice == 1 && planetDataBase != nullptr) {
+        delete[] planetDataBase;
+    } else if (choice == 2 && ticketDataBase != nullptr) {
+        delete[] ticketDataBase;
+    }
 
     return 0;
 }
