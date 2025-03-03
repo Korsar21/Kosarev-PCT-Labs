@@ -1,0 +1,4 @@
+/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/planet.dir
+/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/main.dir
+/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/edit_cache.dir
+/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/rebuild_cache.dir
