@@ -282,6 +282,7 @@ CMakeFiles/lab_2.dir/planet.cpp.o: /home/korsar/Kosarev-PCT-Labs/planet.cpp \
   /usr/include/c++/13/cstddef \
   /usr/include/c++/13/cstdio \
   /usr/include/c++/13/cstdlib \
+  /usr/include/c++/13/cstring \
   /usr/include/c++/13/cwchar \
   /usr/include/c++/13/cwctype \
   /usr/include/c++/13/debug/assertions.h \
@@ -322,6 +323,8 @@ CMakeFiles/lab_2.dir/planet.cpp.o: /home/korsar/Kosarev-PCT-Labs/planet.cpp \
   /usr/include/stdc-predef.h \
   /usr/include/stdio.h \
   /usr/include/stdlib.h \
+  /usr/include/string.h \
+  /usr/include/strings.h \
   /usr/include/time.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
@@ -458,6 +461,10 @@ CMakeFiles/lab_2.dir/main.cpp.o:
 /lib/x86_64-linux-gnu/libm.so.6:
 
 /lib/x86_64-linux-gnu/libc.so.6:
+
+/usr/include/strings.h:
+
+/usr/include/c++/13/cstring:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
 
@@ -678,6 +685,8 @@ ticket/libticket.a:
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
 /usr/include/c++/13/bits/fstream.tcc:
+
+/usr/include/string.h:
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
