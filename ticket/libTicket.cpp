@@ -85,7 +85,8 @@ bool Ticket::operator>(const Ticket& other) const {
 }
 
 bool Ticket::operator==(const Ticket& other) const {
-    return std::strcmp(passengerName, other.passengerName) == 0 && flightNumber == other.flightNumber && price == other.price && hasTransfer == other.hasTransfer;
+    return std::strcmp(passengerName, other.passengerName) == 0 && flightNumber == other.flightNumber && price == other.price &&
+           hasTransfer == other.hasTransfer;
 }
 
 Ticket* Ticket::readFromFile(const char* filename, int& count) {
@@ -157,17 +158,17 @@ void Ticket::addTicket(Ticket*& database, int& count, const Ticket& ticket) {
     database = newDatabase;
 }
 
-void Ticket::removeTicket(Ticket*& database, int& count, const char* ticketAddress) {
+void Ticket::removeTicket(Ticket*& database, int& count, const char* namePassenger) {
     int indexToRemove = -1;
     for (int i = 0; i < count; ++i) {
-        if (std::strcmp(database[i].getPassengerName(), ticketAddress) == 0) {
+        if (std::strcmp(database[i].getPassengerName(), namePassenger) == 0) {
             indexToRemove = i;
             break;
         }
     }
 
     if (indexToRemove == -1) {
-        std::cerr << "Билет с адресом " << ticketAddress << " не найден." << std::endl;
+        std::cerr << "Имя пассажира " << namePassenger << " не найдено." << std::endl;
         return;
     }
 
@@ -179,21 +180,21 @@ void Ticket::removeTicket(Ticket*& database, int& count, const char* ticketAddre
         }
     }
 
-    std::cout << "Билет: " << ticketAddress << " удален." << std::endl;
+    std::cout << "Билет на имя: " << '"' << namePassenger << '"' << " удален." << std::endl;
 
     count--;
     delete[] database;
     database = newDatabase;
 }
 
-bool Ticket::editTicket(Ticket* database, int count, const char* ticketAddress, const Ticket& newTicketData) {
+bool Ticket::editTicket(Ticket* database, int count, const char* namePassenger, const Ticket& newTicketData) {
     for (int i = 0; i < count; ++i) {
-        if (std::strcmp(database[i].getPassengerName(), ticketAddress) == 0) {
+        if (std::strcmp(database[i].getPassengerName(), namePassenger) == 0) {
             database[i] = newTicketData;
             return true;
         }
     }
-    std::cerr << "Билет с адресом " << ticketAddress << " не найден." << std::endl;
+    std::cerr << "Билет на имя: " << '"' << namePassenger << '"' << " не найден." << std::endl;
     return false;
 }
 

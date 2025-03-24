@@ -8,7 +8,7 @@ class Planet {
     char* name;
     long long diameter;
     int satellites;
-    bool hasLife;
+    bool lifeOrder;
 
  public:
     Planet();

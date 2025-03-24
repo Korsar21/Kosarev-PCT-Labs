@@ -3,11 +3,10 @@
 #include <fstream>
 #include <iostream>
 
-
-Planet::Planet() : name(nullptr), diameter(0), satellites(0), hasLife(false) {
+Planet::Planet() : name(nullptr), diameter(0), satellites(0), lifeOrder(false) {
 }
 
-Planet::Planet(const char* n, long long d, int s, bool l) : diameter(d), satellites(s), hasLife(l) {
+Planet::Planet(const char* n, long long d, int s, bool l) : diameter(d), satellites(s), lifeOrder(l) {
     name = new char[strlen(n) + 1];
     std::strncpy(name, n, strlen(n) + 1);
     name[strlen(n)] = '\0';
@@ -17,7 +16,7 @@ Planet::~Planet() {
     delete[] name;
 }
 
-Planet::Planet(const Planet& other) : diameter(other.diameter), satellites(other.satellites), hasLife(other.hasLife) {
+Planet::Planet(const Planet& other) : diameter(other.diameter), satellites(other.satellites), lifeOrder(other.lifeOrder) {
     name = new char[strlen(other.name) + 1];
     std::strncpy(name, other.name, strlen(other.name) + 1);
     name[strlen(other.name)] = '\0';
@@ -31,7 +30,7 @@ Planet& Planet::operator=(const Planet& other) {
         name[strlen(other.name)] = '\0';
         diameter = other.diameter;
         satellites = other.satellites;
-        hasLife = other.hasLife;
+        lifeOrder = other.lifeOrder;
     }
     return *this;
 }
@@ -46,7 +45,7 @@ int Planet::getSatellites() const {
     return satellites;
 }
 bool Planet::getHasLife() const {
-    return hasLife;
+    return lifeOrder;
 }
 
 void Planet::setName(const char* n) {
@@ -62,17 +61,17 @@ void Planet::setSatellites(int s) {
     satellites = s;
 }
 void Planet::setHasLife(bool l) {
-    hasLife = l;
+    lifeOrder = l;
 }
 
 std::ostream& operator<<(std::ostream& os, const Planet& planet) {
-    os << planet.name << " " << planet.diameter << " " << planet.satellites << " " << (planet.hasLife ? 1 : 0);
+    os << planet.name << " " << planet.diameter << " " << planet.satellites << " " << (planet.lifeOrder ? 1 : 0);
     return os;
 }
 
 std::istream& operator>>(std::istream& is, Planet& planet) {
     char buffer[256];
-    is >> buffer >> planet.diameter >> planet.satellites >> planet.hasLife;
+    is >> buffer >> planet.diameter >> planet.satellites >> planet.lifeOrder;
     planet.setName(buffer);
     return is;
 }
@@ -86,7 +85,7 @@ bool Planet::operator>(const Planet& other) const {
 }
 
 bool Planet::operator==(const Planet& other) const {
-    return std::strcmp(name, other.name) == 0 && diameter == other.diameter && satellites == other.satellites && hasLife == other.hasLife;
+    return std::strcmp(name, other.name) == 0 && diameter == other.diameter && satellites == other.satellites && lifeOrder == other.lifeOrder;
 }
 
 Planet* Planet::readFromFile(const char* filename, int& count) {
@@ -110,11 +109,11 @@ Planet* Planet::readFromFile(const char* filename, int& count) {
         char name[100];
         long long diameter;
         int satellites;
-        bool hasLife;
+        bool lifeOrder;
 
-        file >> name >> diameter >> satellites >> hasLife;
+        file >> name >> diameter >> satellites >> lifeOrder;
 
-        database[i] = Planet(name, diameter, satellites, hasLife);
+        database[i] = Planet(name, diameter, satellites, lifeOrder);
     }
 
     file.close();

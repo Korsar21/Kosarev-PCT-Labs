@@ -1,8 +1,9 @@
 #include "planet.hpp"
+#include <cstring>
 #include <fstream>
 #include <iostream>
-#include "ticket/libTicket.hpp"
 #include "planet/libPlanet.hpp"
+#include "ticket/libTicket.hpp"
 
 int choiceLib() {
     int choice;
@@ -62,7 +63,7 @@ int ChoicePlanetMethod() {
         std::cout << "5. Редактировать данные о планете\n";
         std::cout << "6. Сортировать планеты по диаметру\n";
         std::cout << "7. Вывести все планеты на экран\n";
-        std::cout << "8. Выход\n";
+        std::cout << "8. Выход" << std::endl;
         std::cout << "==========================" << std::endl;
 
         if (std::cin >> choice) {
@@ -113,11 +114,11 @@ void switchPlanet(T* planets, int& count, const char* filename) {
 
             case 8:
                 delete[] planets;
-                std::cout << "Выход из программы.\n";
+                std::cout << "Выход." << std::endl;
                 return;
 
             default:
-                std::cout << "Некорректный выбор. Попробуйте снова.\n";
+                std::cout << "Некорректный выбор. Попробуйте снова." << std::endl;
                 break;
         }
     }
@@ -148,17 +149,31 @@ void removePlanet(Planet*& planets, int& count) {
 
 void editPlanet(Planet* planets, int count) {
     char name[100];
-    std::cout << "Введите название планеты для редактирования: ";
-    std::cin >> name;
 
-    Planet newPlanetData = FillPlanetsParametrs();
-
-    Planet::editPlanet(planets, count, name, newPlanetData);
+    if (planets != nullptr) {
+        std::cout << "Введите название планеты для редактирования: ";
+        std::cin >> name;
+        for (int i = 0; i < count; ++i) {
+            if (std::strcmp(planets[i].getName(), name) == 0) {
+                Planet newPlanetData = FillPlanetsParametrs();
+                Planet::editPlanet(planets, count, name, newPlanetData);
+            } else {
+                std::cout << "Планета отсутствует" << std::endl;
+                return;
+            }
+        }
+    } else {
+        std::cout << "Список планет пуст" << std::endl;
+    }
 }
 
 void sortPlanetsByDiameter(Planet* planets, int count) {
-    Planet::sortPlanets(planets, count);
-    std::cout << "Планеты отсортированы по диаметру.\n";
+    if (planets != nullptr) {
+        Planet::sortPlanets(planets, count);
+        std::cout << "Планеты отсортированы по диаметру.\n";
+    } else {
+        std::cout << "Список планет пуст" << std::endl;
+    }
 }
 
 void printAllPlanets(Planet* planets, int count) {
@@ -171,24 +186,24 @@ int ChoiceTicketMethod() {
     int choice;
     while (true) {
         std::cout << "========== Меню ==========" << std::endl;
-        std::cout << "1. Загрузить данные из файла\n";
-        std::cout << "2. Сохранить данные в файл\n";
-        std::cout << "3. Добавить новый билет\n";
-        std::cout << "4. Удалить билет\n";
-        std::cout << "5. Редактировать данные о билете\n";
-        std::cout << "6. Сортировать билеты по цене\n";
-        std::cout << "7. Вывести все билеты на экран\n";
-        std::cout << "8. Выход\n";
+        std::cout << "1. Загрузить данные из файла" << std::endl;
+        std::cout << "2. Сохранить данные в файл" << std::endl;
+        std::cout << "3. Добавить новый билет" << std::endl;
+        std::cout << "4. Удалить билет" << std::endl;
+        std::cout << "5. Редактировать данные о билете" << std::endl;
+        std::cout << "6. Сортировать билеты по номеру рейса" << std::endl;
+        std::cout << "7. Вывести все билеты на экран" << std::endl;
+        std::cout << "8. Выход" << std::endl;
         std::cout << "==========================" << std::endl;
 
         if (std::cin >> choice) {
             if (choice >= 1 && choice <= 8) {
                 return choice;
             } else {
-                std::cout << "Недопустимый выбор. Пожалуйста, выберите опцию от 1 до 8.\n";
+                std::cout << "Недопустимый выбор. Пожалуйста, выберите опцию от 1 до 8." << std::endl;
             }
         } else {
-            std::cout << "Некорректный ввод. Пожалуйста, введите целое число.\n";
+            std::cout << "Некорректный ввод. Пожалуйста, введите целое число." << std::endl;
             std::cin.clear();
             std::cin.ignore(10000, '\n');
         }
@@ -229,11 +244,11 @@ void switchTicket(T* tickets, int& count, const char* filename) {
 
             case 8:
                 delete[] tickets;
-                std::cout << "Выход из программы.\n";
+                std::cout << "Выход." << std::endl;
                 return;
 
             default:
-                std::cout << "Некорректный выбор. Попробуйте снова.\n";
+                std::cout << "Попробуйте снова." << std::endl;
                 break;
         }
     }
@@ -241,18 +256,18 @@ void switchTicket(T* tickets, int& count, const char* filename) {
 
 void loadDataFromFileTicket(Ticket*& tickets, int& count, const char* filename) {
     tickets = Ticket::readFromFile(filename, count);
-    std::cout << "Данные загружены из файла.\n";
+    std::cout << "Данные загружены из файла." << std::endl;
 }
 
 void saveDataToFileTicket(Ticket* tickets, int count, const char* filename) {
     Ticket::writeToFile(filename, tickets, count);
-    std::cout << "Данные сохранены в файл.\n";
+    std::cout << "Данные сохранены в файл." << std::endl;
 }
 
 void addNewTicket(Ticket*& tickets, int& count) {
     Ticket newTicket = FillTicketParametrs();
     Ticket::addTicket(tickets, count, newTicket);
-    std::cout << "Билет добавлен.\n";
+    std::cout << "Билет добавлен." << std::endl;
 }
 
 void removeTicket(Ticket*& tickets, int& count) {
@@ -264,17 +279,31 @@ void removeTicket(Ticket*& tickets, int& count) {
 
 void editTicket(Ticket* tickets, int count) {
     char name[100];
-    std::cout << "Введите имя пассажира для редактирования: ";
-    std::cin >> name;
 
-    Ticket newTicketData = FillTicketParametrs();
-
-    Ticket::editTicket(tickets, count, name, newTicketData);
+    if (tickets != nullptr) {
+        std::cout << "Введите имя пассажира для редактирования: ";
+        std::cin >> name;
+        for (int i = 0; i < count; ++i) {
+            if (std::strcmp(tickets[i].getPassengerName(), name) == 0) {
+                Ticket newTicketData = FillTicketParametrs();
+                Ticket::editTicket(tickets, count, name, newTicketData);
+            } else {
+                std::cout << "Имя пассажира отсутствует" << std::endl;
+                return;
+            }
+        }
+    } else {
+        std::cout << "Список билетов пуст" << std::endl;
+    }
 }
 
 void sortTicketsByPrice(Ticket* tickets, int count) {
-    Ticket::sortTickets(tickets, count);
-    std::cout << "Билеты отсортированы по цене.\n";
+    if (tickets != nullptr) {
+        Ticket::sortTickets(tickets, count);
+        std::cout << "Билеты отсортированы по номеру рейса." << std::endl;
+    } else {
+        std::cout << "Список билетов пуст" << std::endl;
+    }
 }
 
 void printAllTickets(Ticket* tickets, int count) {
