@@ -1,0 +1,6 @@
+/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/FractionApp.dir
+/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/edit_cache.dir
+/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/rebuild_cache.dir
+/home/korsar/Kosarev-PCT-Labs/build/fractionLib/CMakeFiles/fraction.dir
+/home/korsar/Kosarev-PCT-Labs/build/fractionLib/CMakeFiles/edit_cache.dir
+/home/korsar/Kosarev-PCT-Labs/build/fractionLib/CMakeFiles/rebuild_cache.dir

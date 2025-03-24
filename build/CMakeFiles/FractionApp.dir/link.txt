@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/FractionApp.dir/main.cpp.o -o FractionApp  fractionLib/libfraction.a 
