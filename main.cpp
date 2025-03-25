@@ -1,4 +1,3 @@
-// main.cpp
 #include <iostream>
 #include <iomanip>
 #include "fractionLib/Fraction.h"
@@ -6,13 +5,12 @@
 int main() {
     setlocale(LC_ALL, "Russian");
 
-    // ввод дроби с клавиатуры
     std::cout << "Введите дробь:" << std::endl;
     Fraction z;
     std::cin >> z;
     std::cout << "z=" << z << std::endl;
 
-    // проверка конструкторов
+    std::cout << "Проверка конструкторов" << std::endl;
     Fraction fr1(10, 14), fr2;
     std::cout << "fr2=" << fr2 << std::endl;
     std::cout << "fr1=" << fr1 << std::endl;
@@ -24,7 +22,7 @@ int main() {
     Fraction f = dbl;
     std::cout << "f=" << f << std::endl;
 
-    // проверка перегруженной операции "+"
+    std::cout << "Перегруженная операция сложения" << std::endl;
     y = x + z;
     std::cout << "y=" << y << std::endl;
     y += x;

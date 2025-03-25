@@ -1,8 +1,8 @@
 #include "Fraction.h"
+#include <cctype>
+#include <cmath>
 #include <cstdlib>
 #include <cstring>
-#include <cmath>
-#include <cctype>
 
 int Fraction::gcd(int a, int b) const {
     a = std::abs(a);
@@ -38,7 +38,8 @@ void Fraction::normalize() {
 }
 
 bool hasZeroDenominator(const char* str) {
-    if (!str || *str == '\0') return false;
+    if (!str || *str == '\0')
+        return false;
 
     char* temp = new char[strlen(str) + 1];
     strcpy(temp, str);
@@ -54,7 +55,8 @@ bool hasZeroDenominator(const char* str) {
     bool result = false;
     if (slashPos) {
         char* denomStart = slashPos + 1;
-        while (*denomStart && isspace(*denomStart)) denomStart++;
+        while (*denomStart && isspace(*denomStart))
+            denomStart++;
 
         int denom = atoi(denomStart);
         if (denom == 0) {
@@ -85,7 +87,8 @@ Fraction::Fraction(const Fraction& other) : numerator(other.numerator), denomina
 Fraction::Fraction(const char* str) : numerator(0), denominator(1) {
     // std::cout << "Вызван конструктор Fraction(const char*)" << std::endl;
 
-    if (!str || *str == '\0') return;
+    if (!str || *str == '\0')
+        return;
 
     char* temp = new char[strlen(str) + 1];
     strcpy(temp, str);
@@ -100,7 +103,8 @@ Fraction::Fraction(const char* str) : numerator(0), denominator(1) {
         ptr++;
     }
 
-    while (*ptr && isspace(*ptr)) ptr++;
+    while (*ptr && isspace(*ptr))
+        ptr++;
 
     char* slashPos = nullptr;
     for (char* c = ptr; *c; c++) {
@@ -111,18 +115,19 @@ Fraction::Fraction(const char* str) : numerator(0), denominator(1) {
     }
 
     if (slashPos) {
-
         char* numEnd = slashPos;
-        while (numEnd > ptr && isspace(*(numEnd - 1))) numEnd--;
+        while (numEnd > ptr && isspace(*(numEnd - 1)))
+            numEnd--;
         char* numStart = ptr;
 
         char* wholeEnd = nullptr;
         for (char* c = ptr; c < numEnd; c++) {
-            if (isspace(*c) && c > ptr && isdigit(*(c-1))) {
+            if (isspace(*c) && c > ptr && isdigit(*(c - 1))) {
                 wholeEnd = c;
 
                 char* nextDigit = c + 1;
-                while (*nextDigit && isspace(*nextDigit)) nextDigit++;
+                while (*nextDigit && isspace(*nextDigit))
+                    nextDigit++;
                 if (*nextDigit && isdigit(*nextDigit)) {
                     break;
                 }
@@ -140,7 +145,8 @@ Fraction::Fraction(const char* str) : numerator(0), denominator(1) {
             *wholeEnd = wholePartTemp;
 
             numStart = wholeEnd;
-            while (*numStart && isspace(*numStart)) numStart++;
+            while (*numStart && isspace(*numStart))
+                numStart++;
         }
 
         char numTemp = *numEnd;
@@ -149,7 +155,8 @@ Fraction::Fraction(const char* str) : numerator(0), denominator(1) {
         *numEnd = numTemp;
 
         char* denomStart = slashPos + 1;
-        while (*denomStart && isspace(*denomStart)) denomStart++;
+        while (*denomStart && isspace(*denomStart))
+            denomStart++;
 
         int denom = atoi(denomStart);
 
@@ -159,7 +166,8 @@ Fraction::Fraction(const char* str) : numerator(0), denominator(1) {
             denominator = 1;
         } else {
             numerator = whole * denom + num;
-            if (negative) numerator = -numerator;
+            if (negative)
+                numerator = -numerator;
             denominator = denom;
             reduce();
         }
@@ -172,7 +180,8 @@ Fraction::Fraction(const char* str) : numerator(0), denominator(1) {
 
         int whole = atoi(ptr);
         numerator = whole;
-        if (negative) numerator = -numerator;
+        if (negative)
+            numerator = -numerator;
         denominator = 1;
     }
 
