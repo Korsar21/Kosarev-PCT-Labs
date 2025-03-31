@@ -117,17 +117,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named FractionApp
+# Target rules for targets named fraction_app
 
 # Build rule for target.
-FractionApp: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 FractionApp
-.PHONY : FractionApp
+fraction_app: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fraction_app
+.PHONY : fraction_app
 
 # fast build rule for target.
-FractionApp/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FractionApp.dir/build.make CMakeFiles/FractionApp.dir/build
-.PHONY : FractionApp/fast
+fraction_app/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fraction_app.dir/build.make CMakeFiles/fraction_app.dir/build
+.PHONY : fraction_app/fast
 
 #=============================================================================
 # Target rules for targets named fraction
@@ -147,7 +147,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FractionApp.dir/build.make CMakeFiles/FractionApp.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fraction_app.dir/build.make CMakeFiles/fraction_app.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -155,7 +155,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FractionApp.dir/build.make CMakeFiles/FractionApp.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fraction_app.dir/build.make CMakeFiles/fraction_app.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -163,7 +163,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FractionApp.dir/build.make CMakeFiles/FractionApp.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fraction_app.dir/build.make CMakeFiles/fraction_app.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -174,8 +174,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... FractionApp"
 	@echo "... fraction"
+	@echo "... fraction_app"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/korsar/Kosarev-PCT-Labs/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/FractionApp.dir/all
+all: CMakeFiles/fraction_app.dir/all
 all: fractionLib/all
 .PHONY : all
 
@@ -72,7 +72,7 @@ preinstall: fractionLib/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/FractionApp.dir/clean
+clean: CMakeFiles/fraction_app.dir/clean
 clean: fractionLib/clean
 .PHONY : clean
 
@@ -92,30 +92,30 @@ fractionLib/clean: fractionLib/CMakeFiles/fraction.dir/clean
 .PHONY : fractionLib/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/FractionApp.dir
+# Target rules for target CMakeFiles/fraction_app.dir
 
 # All Build rule for target.
-CMakeFiles/FractionApp.dir/all: fractionLib/CMakeFiles/fraction.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FractionApp.dir/build.make CMakeFiles/FractionApp.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FractionApp.dir/build.make CMakeFiles/FractionApp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles --progress-num=1,2 "Built target FractionApp"
-.PHONY : CMakeFiles/FractionApp.dir/all
+CMakeFiles/fraction_app.dir/all: fractionLib/CMakeFiles/fraction.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fraction_app.dir/build.make CMakeFiles/fraction_app.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fraction_app.dir/build.make CMakeFiles/fraction_app.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles --progress-num=3,4 "Built target fraction_app"
+.PHONY : CMakeFiles/fraction_app.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/FractionApp.dir/rule: cmake_check_build_system
+CMakeFiles/fraction_app.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/FractionApp.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/fraction_app.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles 0
-.PHONY : CMakeFiles/FractionApp.dir/rule
+.PHONY : CMakeFiles/fraction_app.dir/rule
 
 # Convenience name for target.
-FractionApp: CMakeFiles/FractionApp.dir/rule
-.PHONY : FractionApp
+fraction_app: CMakeFiles/fraction_app.dir/rule
+.PHONY : fraction_app
 
 # clean rule for target.
-CMakeFiles/FractionApp.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FractionApp.dir/build.make CMakeFiles/FractionApp.dir/clean
-.PHONY : CMakeFiles/FractionApp.dir/clean
+CMakeFiles/fraction_app.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fraction_app.dir/build.make CMakeFiles/fraction_app.dir/clean
+.PHONY : CMakeFiles/fraction_app.dir/clean
 
 #=============================================================================
 # Target rules for target fractionLib/CMakeFiles/fraction.dir
@@ -124,7 +124,7 @@ CMakeFiles/FractionApp.dir/clean:
 fractionLib/CMakeFiles/fraction.dir/all:
 	$(MAKE) $(MAKESILENT) -f fractionLib/CMakeFiles/fraction.dir/build.make fractionLib/CMakeFiles/fraction.dir/depend
 	$(MAKE) $(MAKESILENT) -f fractionLib/CMakeFiles/fraction.dir/build.make fractionLib/CMakeFiles/fraction.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles --progress-num=3,4 "Built target fraction"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles --progress-num=1,2 "Built target fraction"
 .PHONY : fractionLib/CMakeFiles/fraction.dir/all
 
 # Build rule for subdir invocation for target.
