@@ -2,7 +2,61 @@
 #include <cctype>
 #include <cmath>
 #include <cstdlib>
-#include <cstring>
+#include <sstream>
+#include <algorithm>
+
+
+bool Fraction::isValidFractionString(const char* str) {
+    if (!str || *str == '\0') return false;
+
+    std::string s(str);
+    s.erase(std::remove_if(s.begin(), s.end(), ::isspace), s.end());
+
+    if (s.empty()) return false;
+
+    size_t slashPos = s.find('/');
+
+    if (slashPos != std::string::npos) {
+        if (slashPos == 0 || slashPos == s.length() - 1) return false;
+
+        std::string numStr = s.substr(0, slashPos);
+        std::string denomStr = s.substr(slashPos + 1);
+
+        auto isValidNumber = [](const std::string& num) -> bool {
+            if (num.empty()) return false;
+            size_t start = 0;
+            if (num[0] == '+' || num[0] == '-') start = 1;
+            if (start == num.length()) return false;
+
+            for (size_t i = start; i < num.length(); ++i) {
+                if (!isdigit(num[i])) return false;
+            }
+            return true;
+        };
+
+        if (!isValidNumber(numStr)) return false;
+        if (!isValidNumber(denomStr)) return false;
+
+        int denom = std::stoi(denomStr);
+        if (denom == 0) return false;
+    } else {
+        auto isValidInteger = [](const std::string& num) -> bool {
+            if (num.empty()) return false;
+            size_t start = 0;
+            if (num[0] == '+' || num[0] == '-') start = 1;
+            if (start == num.length()) return false;
+
+            for (size_t i = start; i < num.length(); ++i) {
+                if (!isdigit(num[i])) return false;
+            }
+            return true;
+        };
+
+        if (!isValidInteger(s)) return false;
+    }
+
+    return true;
+}
 
 int Fraction::gcd(int a, int b) const {
     a = std::abs(a);
@@ -16,208 +70,100 @@ int Fraction::gcd(int a, int b) const {
 }
 
 void Fraction::reduce() {
-    if (denominator == 0) {
-        std::cerr << "Ошибка: знаменатель равен 0" << std::endl;
-        numerator = 0;
-        denominator = 1;
-        return;
+    if (m_denominator == 0) {
+        throw std::invalid_argument("Denominator cannot be zero");
     }
 
-    int common_divisor = gcd(numerator, denominator);
-    numerator /= common_divisor;
-    denominator /= common_divisor;
+    int commonDivisor = gcd(m_numerator, m_denominator);
+    m_numerator /= commonDivisor;
+    m_denominator /= commonDivisor;
 
     normalize();
 }
 
 void Fraction::normalize() {
-    if (denominator < 0) {
-        numerator = -numerator;
-        denominator = -denominator;
+    if (m_denominator < 0) {
+        m_numerator = -m_numerator;
+        m_denominator = -m_denominator;
     }
 }
 
-bool hasZeroDenominator(const char* str) {
-    if (!str || *str == '\0')
-        return false;
-
-    char* temp = new char[strlen(str) + 1];
-    strcpy(temp, str);
-
-    char* slashPos = nullptr;
-    for (char* c = temp; *c; c++) {
-        if (*c == '/') {
-            slashPos = c;
-            break;
-        }
+Fraction::Fraction(int num, int denom) : m_numerator(num), m_denominator(denom) {
+    if (m_denominator == 0) {
+        throw std::invalid_argument("Denominator cannot be zero");
     }
-
-    bool result = false;
-    if (slashPos) {
-        char* denomStart = slashPos + 1;
-        while (*denomStart && isspace(*denomStart))
-            denomStart++;
-
-        int denom = atoi(denomStart);
-        if (denom == 0) {
-            result = true;
-        }
-    }
-
-    delete[] temp;
-    return result;
+    reduce();
 }
 
-Fraction::Fraction(int num, int denom) : numerator(num), denominator(denom) {
-    // std::cout << "Вызван конструктор Fraction(int, int)" << std::endl;
+Fraction::Fraction(const Fraction& other) : m_numerator(other.m_numerator), m_denominator(other.m_denominator) {
+}
 
-    if (denominator == 0) {
-        std::cerr << "Ошибка: знаменатель равен 0" << std::endl;
-        numerator = 0;
-        denominator = 1;
-    } else {
-        reduce();
+Fraction::Fraction(const char* str) : m_numerator(0), m_denominator(1) {
+    if (!str || *str == '\0') {
+        throw std::invalid_argument("Empty string input");
     }
-}
 
-Fraction::Fraction(const Fraction& other) : numerator(other.numerator), denominator(other.denominator) {
-    // std::cout << "Вызван конструктор копирования" << std::endl;
-}
+    if (!isValidFractionString(str)) {
+        throw std::invalid_argument("Invalid fraction format");
+    }
 
-Fraction::Fraction(const char* str) : numerator(0), denominator(1) {
-    // std::cout << "Вызван конструктор Fraction(const char*)" << std::endl;
-
-    if (!str || *str == '\0')
-        return;
-
-    char* temp = new char[strlen(str) + 1];
-    strcpy(temp, str);
+    std::string s(str);
+    s.erase(std::remove_if(s.begin(), s.end(), ::isspace), s.end());
 
     bool negative = false;
-    char* ptr = temp;
+    size_t i = 0;
 
-    if (*ptr == '-') {
+    if (s[i] == '-') {
         negative = true;
-        ptr++;
-    } else if (*ptr == '+') {
-        ptr++;
+        i++;
+    } else if (s[i] == '+') {
+        i++;
     }
 
-    while (*ptr && isspace(*ptr))
-        ptr++;
+    size_t slashPos = s.find('/');
 
-    char* slashPos = nullptr;
-    for (char* c = ptr; *c; c++) {
-        if (*c == '/') {
-            slashPos = c;
-            break;
-        }
-    }
+    if (slashPos != std::string::npos) {
+        std::string numStr = s.substr(i, slashPos - i);
+        std::string denomStr = s.substr(slashPos + 1);
 
-    if (slashPos) {
-        char* numEnd = slashPos;
-        while (numEnd > ptr && isspace(*(numEnd - 1)))
-            numEnd--;
-        char* numStart = ptr;
+        m_numerator = std::stoi(numStr);
+        m_denominator = std::stoi(denomStr);
 
-        char* wholeEnd = nullptr;
-        for (char* c = ptr; c < numEnd; c++) {
-            if (isspace(*c) && c > ptr && isdigit(*(c - 1))) {
-                wholeEnd = c;
-
-                char* nextDigit = c + 1;
-                while (*nextDigit && isspace(*nextDigit))
-                    nextDigit++;
-                if (*nextDigit && isdigit(*nextDigit)) {
-                    break;
-                }
-                wholeEnd = nullptr;
-            }
-        }
-
-        int whole = 0;
-        int num = 0;
-
-        if (wholeEnd) {
-            char wholePartTemp = *wholeEnd;
-            *wholeEnd = '\0';
-            whole = atoi(numStart);
-            *wholeEnd = wholePartTemp;
-
-            numStart = wholeEnd;
-            while (*numStart && isspace(*numStart))
-                numStart++;
-        }
-
-        char numTemp = *numEnd;
-        *numEnd = '\0';
-        num = atoi(numStart);
-        *numEnd = numTemp;
-
-        char* denomStart = slashPos + 1;
-        while (*denomStart && isspace(*denomStart))
-            denomStart++;
-
-        int denom = atoi(denomStart);
-
-        if (denom == 0) {
-            std::cerr << "Ошибка: знаменатель равен 0" << std::endl;
-            numerator = 0;
-            denominator = 1;
-        } else {
-            numerator = whole * denom + num;
-            if (negative)
-                numerator = -numerator;
-            denominator = denom;
-            reduce();
-        }
+        if (negative) m_numerator = -m_numerator;
     } else {
-        char* end = ptr + strlen(ptr) - 1;
-        while (end > ptr && isspace(*end)) {
-            *end = '\0';
-            end--;
-        }
-
-        int whole = atoi(ptr);
-        numerator = whole;
-        if (negative)
-            numerator = -numerator;
-        denominator = 1;
+        m_numerator = std::stoi(s.substr(i));
+        m_denominator = 1;
     }
 
-    delete[] temp;
+    reduce();
 }
 
-Fraction::Fraction(double value, int n_dec) : numerator(0), denominator(1) {
-    // std::cout << "Вызван конструктор Fraction(double)" << std::endl;
-
-    double abs_value = std::abs(value);
+Fraction::Fraction(double value, int nDec) : m_numerator(0), m_denominator(1) {
+    double absValue = std::abs(value);
     int sign = (value < 0) ? -1 : 1;
 
     int multiplier = 1;
-    for (int i = 0; i < n_dec; i++) {
+    for (int i = 0; i < nDec; i++) {
         multiplier *= 10;
     }
 
-    numerator = sign * static_cast<int>(round(abs_value * multiplier));
-    denominator = multiplier;
+    m_numerator = sign * static_cast<int>(round(absValue * multiplier));
+    m_denominator = multiplier;
     reduce();
 }
 
 std::ostream& operator<<(std::ostream& os, const Fraction& frac) {
-    int whole = frac.numerator / frac.denominator;
-    int remainder = std::abs(frac.numerator) % frac.denominator;
+    bool isNegative = frac.m_numerator < 0;
+    int absNum = std::abs(frac.m_numerator);
+    int whole = absNum / frac.m_denominator;
+    int remainder = absNum % frac.m_denominator;
 
     if (remainder == 0) {
-        os << whole;
-    } else if (std::abs(whole) == 0) {
-        os << frac.numerator << "/" << frac.denominator;
+        os << (isNegative ? "-" : "") << whole;
+    } else if (whole == 0) {
+        os << (isNegative ? "-" : "") << remainder << "/" << frac.m_denominator;
     } else {
-        if (whole < 0) {
-            os << whole << " " << remainder << "/" << frac.denominator;
-        } else {
-            os << whole << " " << remainder << "/" << frac.denominator;
-        }
+        os << (isNegative ? "-" : "") << whole << " " << remainder << "/" << frac.m_denominator;
     }
 
     return os;
@@ -225,85 +171,60 @@ std::ostream& operator<<(std::ostream& os, const Fraction& frac) {
 
 std::istream& operator>>(std::istream& is, Fraction& frac) {
     char buffer[100] = {0};
-
     is.getline(buffer, sizeof(buffer));
 
-    if (hasZeroDenominator(buffer)) {
-        std::cerr << "Ошибка: знаменатель не может быть равен 0!" << std::endl;
-        exit(1);
+    try {
+        Fraction temp(buffer);
+        frac = temp;
+    } catch (const std::invalid_argument& e) {
+        is.setstate(std::ios::failbit);
+        throw std::invalid_argument(
+            "Некорректный формат дроби."
+            );
     }
-
-    Fraction temp(buffer);
-    frac = temp;
 
     return is;
 }
 
 Fraction Fraction::operator+(const Fraction& other) const {
-    // std::cout << "Вызвана операция Fraction+Fraction" << std::endl;
-
-    int new_num = numerator * other.denominator + other.numerator * denominator;
-    int new_denom = denominator * other.denominator;
-
-    return Fraction(new_num, new_denom);
+    int newNum = m_numerator * other.m_denominator + other.m_numerator * m_denominator;
+    int newDenom = m_denominator * other.m_denominator;
+    return Fraction(newNum, newDenom);
 }
 
 Fraction& Fraction::operator+=(const Fraction& other) {
-    // std::cout << "Вызвана операция Fraction+=Fraction" << std::endl;
-
-    numerator = numerator * other.denominator + other.numerator * denominator;
-    denominator = denominator * other.denominator;
+    m_numerator = m_numerator * other.m_denominator + other.m_numerator * m_denominator;
+    m_denominator = m_denominator * other.m_denominator;
     reduce();
-
     return *this;
 }
 
 Fraction Fraction::operator+(int value) const {
-    // std::cout << "Вызвана операция Fraction+int" << std::endl;
-
-    int new_num = numerator + value * denominator;
-    return Fraction(new_num, denominator);
+    return *this + Fraction(value);
 }
 
 Fraction& Fraction::operator+=(int value) {
-    // std::cout << "Вызвана операция Fraction+=int" << std::endl;
-
-    numerator += value * denominator;
-    reduce();
-
+    *this += Fraction(value);
     return *this;
 }
 
 Fraction operator+(int value, const Fraction& frac) {
-    // std::cout << "Вызвана операция int+Fraction" << std::endl;
-
-    int new_num = value * frac.denominator + frac.numerator;
-    return Fraction(new_num, frac.denominator);
-}
-
-Fraction::operator double() const {
-    return static_cast<double>(numerator) / denominator;
+    return Fraction(value) + frac;
 }
 
 Fraction Fraction::operator+(double value) const {
-    // std::cout << "Вызвана операция Fraction+double" << std::endl;
-
-    Fraction value_frac(value);
-    return *this + value_frac;
+    return *this + Fraction(value);
 }
 
 Fraction& Fraction::operator+=(double value) {
-    // std::cout << "Вызвана операция Fraction+=double" << std::endl;
-
-    Fraction value_frac(value);
-    *this += value_frac;
-
+    *this += Fraction(value);
     return *this;
 }
 
 Fraction operator+(double value, const Fraction& frac) {
-    // std::cout << "Вызвана операция double+Fraction" << std::endl;
+    return Fraction(value) + frac;
+}
 
-    Fraction value_frac(value);
-    return value_frac + frac;
+Fraction::operator double() const {
+    return static_cast<double>(m_numerator) / m_denominator;
 }
