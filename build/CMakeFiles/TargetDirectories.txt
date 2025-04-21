@@ -1,6 +1,6 @@
-/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/lab_3.dir
+/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/lab4.dir
 /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/edit_cache.dir
 /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/rebuild_cache.dir
-/home/korsar/Kosarev-PCT-Labs/build/fractionLib/CMakeFiles/fractionLib.dir
-/home/korsar/Kosarev-PCT-Labs/build/fractionLib/CMakeFiles/edit_cache.dir
-/home/korsar/Kosarev-PCT-Labs/build/fractionLib/CMakeFiles/rebuild_cache.dir
+/home/korsar/Kosarev-PCT-Labs/build/MyStack/CMakeFiles/MyStack.dir
+/home/korsar/Kosarev-PCT-Labs/build/MyStack/CMakeFiles/edit_cache.dir
+/home/korsar/Kosarev-PCT-Labs/build/MyStack/CMakeFiles/rebuild_cache.dir

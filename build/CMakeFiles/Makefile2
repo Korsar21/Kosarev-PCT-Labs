@@ -63,85 +63,85 @@ CMAKE_BINARY_DIR = /home/korsar/Kosarev-PCT-Labs/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/lab_3.dir/all
-all: fractionLib/all
+all: CMakeFiles/lab4.dir/all
+all: MyStack/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall: fractionLib/preinstall
+preinstall: MyStack/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/lab_3.dir/clean
-clean: fractionLib/clean
+clean: CMakeFiles/lab4.dir/clean
+clean: MyStack/clean
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory fractionLib
+# Directory level rules for directory MyStack
 
 # Recursive "all" directory target.
-fractionLib/all: fractionLib/CMakeFiles/fractionLib.dir/all
-.PHONY : fractionLib/all
+MyStack/all: MyStack/CMakeFiles/MyStack.dir/all
+.PHONY : MyStack/all
 
 # Recursive "preinstall" directory target.
-fractionLib/preinstall:
-.PHONY : fractionLib/preinstall
+MyStack/preinstall:
+.PHONY : MyStack/preinstall
 
 # Recursive "clean" directory target.
-fractionLib/clean: fractionLib/CMakeFiles/fractionLib.dir/clean
-.PHONY : fractionLib/clean
+MyStack/clean: MyStack/CMakeFiles/MyStack.dir/clean
+.PHONY : MyStack/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/lab_3.dir
+# Target rules for target CMakeFiles/lab4.dir
 
 # All Build rule for target.
-CMakeFiles/lab_3.dir/all: fractionLib/CMakeFiles/fractionLib.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_3.dir/build.make CMakeFiles/lab_3.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_3.dir/build.make CMakeFiles/lab_3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles --progress-num=3,4 "Built target lab_3"
-.PHONY : CMakeFiles/lab_3.dir/all
+CMakeFiles/lab4.dir/all: MyStack/CMakeFiles/MyStack.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab4.dir/build.make CMakeFiles/lab4.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab4.dir/build.make CMakeFiles/lab4.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles --progress-num=3,4 "Built target lab4"
+.PHONY : CMakeFiles/lab4.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/lab_3.dir/rule: cmake_check_build_system
+CMakeFiles/lab4.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/lab_3.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/lab4.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles 0
-.PHONY : CMakeFiles/lab_3.dir/rule
+.PHONY : CMakeFiles/lab4.dir/rule
 
 # Convenience name for target.
-lab_3: CMakeFiles/lab_3.dir/rule
-.PHONY : lab_3
+lab4: CMakeFiles/lab4.dir/rule
+.PHONY : lab4
 
 # clean rule for target.
-CMakeFiles/lab_3.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_3.dir/build.make CMakeFiles/lab_3.dir/clean
-.PHONY : CMakeFiles/lab_3.dir/clean
+CMakeFiles/lab4.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab4.dir/build.make CMakeFiles/lab4.dir/clean
+.PHONY : CMakeFiles/lab4.dir/clean
 
 #=============================================================================
-# Target rules for target fractionLib/CMakeFiles/fractionLib.dir
+# Target rules for target MyStack/CMakeFiles/MyStack.dir
 
 # All Build rule for target.
-fractionLib/CMakeFiles/fractionLib.dir/all:
-	$(MAKE) $(MAKESILENT) -f fractionLib/CMakeFiles/fractionLib.dir/build.make fractionLib/CMakeFiles/fractionLib.dir/depend
-	$(MAKE) $(MAKESILENT) -f fractionLib/CMakeFiles/fractionLib.dir/build.make fractionLib/CMakeFiles/fractionLib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles --progress-num=1,2 "Built target fractionLib"
-.PHONY : fractionLib/CMakeFiles/fractionLib.dir/all
+MyStack/CMakeFiles/MyStack.dir/all:
+	$(MAKE) $(MAKESILENT) -f MyStack/CMakeFiles/MyStack.dir/build.make MyStack/CMakeFiles/MyStack.dir/depend
+	$(MAKE) $(MAKESILENT) -f MyStack/CMakeFiles/MyStack.dir/build.make MyStack/CMakeFiles/MyStack.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles --progress-num=1,2 "Built target MyStack"
+.PHONY : MyStack/CMakeFiles/MyStack.dir/all
 
 # Build rule for subdir invocation for target.
-fractionLib/CMakeFiles/fractionLib.dir/rule: cmake_check_build_system
+MyStack/CMakeFiles/MyStack.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fractionLib/CMakeFiles/fractionLib.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyStack/CMakeFiles/MyStack.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles 0
-.PHONY : fractionLib/CMakeFiles/fractionLib.dir/rule
+.PHONY : MyStack/CMakeFiles/MyStack.dir/rule
 
 # Convenience name for target.
-fractionLib: fractionLib/CMakeFiles/fractionLib.dir/rule
-.PHONY : fractionLib
+MyStack: MyStack/CMakeFiles/MyStack.dir/rule
+.PHONY : MyStack
 
 # clean rule for target.
-fractionLib/CMakeFiles/fractionLib.dir/clean:
-	$(MAKE) $(MAKESILENT) -f fractionLib/CMakeFiles/fractionLib.dir/build.make fractionLib/CMakeFiles/fractionLib.dir/clean
-.PHONY : fractionLib/CMakeFiles/fractionLib.dir/clean
+MyStack/CMakeFiles/MyStack.dir/clean:
+	$(MAKE) $(MAKESILENT) -f MyStack/CMakeFiles/MyStack.dir/build.make MyStack/CMakeFiles/MyStack.dir/clean
+.PHONY : MyStack/CMakeFiles/MyStack.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

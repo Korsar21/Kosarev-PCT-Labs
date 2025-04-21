@@ -8,10 +8,10 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
   "/home/korsar/Kosarev-PCT-Labs/CMakeLists.txt"
+  "/home/korsar/Kosarev-PCT-Labs/MyStack/CMakeLists.txt"
   "CMakeFiles/3.28.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.28.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.28.3/CMakeSystem.cmake"
-  "/home/korsar/Kosarev-PCT-Labs/fractionLib/CMakeLists.txt"
   "/usr/share/cmake-3.28/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake"
@@ -41,11 +41,11 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
-  "fractionLib/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "MyStack/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/lab_3.dir/DependInfo.cmake"
-  "fractionLib/CMakeFiles/fractionLib.dir/DependInfo.cmake"
+  "CMakeFiles/lab4.dir/DependInfo.cmake"
+  "MyStack/CMakeFiles/MyStack.dir/DependInfo.cmake"
   )

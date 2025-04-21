@@ -1,48 +1,66 @@
 #include <iostream>
-#include "fractionLib/Fraction.h"
+#include <fstream>
+#include "MyStack/MyStack.h"
+
+void Multipliers(int n, MyStack<int> &stack) {
+    if (n < 0) {
+        throw std::invalid_argument("Некорректный ввод!");
+    }
+    if (n == 0) {
+        throw std::invalid_argument("Некорректный ввод!");
+    }
+    if (n == 1) {
+        stack.append(1);
+        return;
+    }
+    int divisor = 2;
+    while (n > 1) {
+        if (n % divisor == 0) {
+            stack.append(divisor);
+            n /= divisor;
+        } else {
+            divisor++;
+        }
+    }
+}
+
 
 int main() {
     try {
-        setlocale(LC_ALL, "Russian");
+        std::cout << "Введите число: ";
+        int number;
+        std::cin >> number;
+        std::cout << std::endl;
+        MyStack<int> stack;
+        Multipliers(number, stack);
 
-        std::cout << "Введите дробь: \n";
-        Fraction z;
-        std::cin >> z;
-        std::cout << "z=" << z << std::endl;
-        std::cout << std::endl << std::endl << "проверка конструкторов" << std::endl;
-        Fraction fr1(10, 14), fr2;
-        std::cout << "fr2=" << fr2 << std::endl;
-        std::cout << "fr1=" << fr1 << std::endl;
-        Fraction fr = "-1 4/8";
-        std::cout << "fr=" << fr << std::endl;
-        Fraction x(z), y;
-        std::cout << "x=" << x << std::endl;
-        double dbl = -1.25;
-        Fraction f = dbl;
-        std::cout << "f=" << f << std::endl;
-        std::cout << std::endl << std::endl << "Проверка перегруженной операции сложения" << std::endl;
-        y = x + z;
-        std::cout << "y=" << y << std::endl;
-        y += x;
-        f += dbl / 2;
-        std::cout << "f=" << f << std::endl;
-        y = x + dbl;
-        std::cout << "y=" << y << std::endl;
-        y = dbl + y;
-        std::cout << "y=" << y << std::endl;
-        y += dbl;
-        std::cout << "y=" << y << std::endl;
-        int i = 5;
-        y += i;
-        std::cout << "y=" << y << std::endl;
-        y = i + x;
-        std::cout << "y=" << y << std::endl;
-        y = x + i;
-        std::cout << "y=" << y << std::endl;
-        y += dbl + i + x;
-        std::cout << "y=" << y << std::endl;
+        MyStack<int> stackCopy = stack;
+        std::cout << number << " = ";
+        bool first = false;
+        while (!stack.any()) {
+            if (first) {
+                std::cout << " * ";
+            }
+            std::cout << stack.get();
+            stack.pop();
+            first = true;
+        }
+        std::cout << std::endl << std::endl;
+
+        MyStack<int> tempStack;
+        while (!stackCopy.any()) {
+            tempStack.append(stackCopy.get());
+            stackCopy.pop();
+        }
+
+        std::cout << number << " = ";
+        std::cout << tempStack;
+
+
+
         return 0;
-    } catch (std::invalid_argument& e) {
+    }
+    catch (std::invalid_argument& e){
         std::cout << e.what() << std::endl;
     }
 }
