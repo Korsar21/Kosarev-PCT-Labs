@@ -1,16 +1,19 @@
-cmake_minimum_required(VERSION 3.10)
-project(FractionProject)
+cmake_minimum_required(VERSION 3.23)
 
-# Повышаем стандарт до C++17 для поддержки всех возможностей
+set(project "lab_3")
+project(${project})
+
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Добавляем подпроект с библиотекой
+set(${project}_SOURCES
+        main.cpp)
+
 add_subdirectory(fractionLib)
 
-# Создаем исполняемый файл
-add_executable(fraction_app main.cpp)
+set(${project}_SOURCE_LIST
+        ${${project}_SOURCES})
 
-# Связываем с библиотекой и добавляем пути к заголовочным файлам
-target_link_libraries(fraction_app PRIVATE fraction)
-target_include_directories(fraction_app PRIVATE ${CMAKE_SOURCE_DIR}/fractionLib)
+add_executable(${project}
+        ${${project}_SOURCE_LIST})
+
+target_link_libraries(${project} fractionLib)

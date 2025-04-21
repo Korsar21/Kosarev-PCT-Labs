@@ -46,6 +46,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/fraction_app.dir/DependInfo.cmake"
-  "fractionLib/CMakeFiles/fraction.dir/DependInfo.cmake"
+  "CMakeFiles/lab_3.dir/DependInfo.cmake"
+  "fractionLib/CMakeFiles/fractionLib.dir/DependInfo.cmake"
   )

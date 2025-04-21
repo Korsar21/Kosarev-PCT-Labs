@@ -117,37 +117,37 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named fraction_app
+# Target rules for targets named lab_3
 
 # Build rule for target.
-fraction_app: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fraction_app
-.PHONY : fraction_app
+lab_3: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab_3
+.PHONY : lab_3
 
 # fast build rule for target.
-fraction_app/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fraction_app.dir/build.make CMakeFiles/fraction_app.dir/build
-.PHONY : fraction_app/fast
+lab_3/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_3.dir/build.make CMakeFiles/lab_3.dir/build
+.PHONY : lab_3/fast
 
 #=============================================================================
-# Target rules for targets named fraction
+# Target rules for targets named fractionLib
 
 # Build rule for target.
-fraction: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fraction
-.PHONY : fraction
+fractionLib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fractionLib
+.PHONY : fractionLib
 
 # fast build rule for target.
-fraction/fast:
-	$(MAKE) $(MAKESILENT) -f fractionLib/CMakeFiles/fraction.dir/build.make fractionLib/CMakeFiles/fraction.dir/build
-.PHONY : fraction/fast
+fractionLib/fast:
+	$(MAKE) $(MAKESILENT) -f fractionLib/CMakeFiles/fractionLib.dir/build.make fractionLib/CMakeFiles/fractionLib.dir/build
+.PHONY : fractionLib/fast
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fraction_app.dir/build.make CMakeFiles/fraction_app.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_3.dir/build.make CMakeFiles/lab_3.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -155,7 +155,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fraction_app.dir/build.make CMakeFiles/fraction_app.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_3.dir/build.make CMakeFiles/lab_3.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -163,7 +163,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fraction_app.dir/build.make CMakeFiles/fraction_app.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_3.dir/build.make CMakeFiles/lab_3.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -174,8 +174,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... fraction"
-	@echo "... fraction_app"
+	@echo "... fractionLib"
+	@echo "... lab_3"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

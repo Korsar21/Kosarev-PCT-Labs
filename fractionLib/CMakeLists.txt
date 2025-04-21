@@ -1,13 +1,20 @@
-cmake_minimum_required(VERSION 3.10)
-project(fractionLib)
+cmake_minimum_required(VERSION 3.23)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(project "fractionLib")
+project(${project})
 
-add_library(fraction STATIC
-    Fraction.cpp
-)
+set(CMAKE_CXX_STANDARD 17)
 
-target_include_directories(fraction PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/..
-)
+set(${project}_SOURCES
+    Fraction.cpp)
+
+set(${project}_HEADERS
+    Fraction.h)
+
+set(${project}_SOURCE_LIST
+        ${${project}_SOURCES}
+        ${${project}_HEADERS})
+
+add_library(${project}
+        STATIC
+        ${${project}_SOURCE_LIST})

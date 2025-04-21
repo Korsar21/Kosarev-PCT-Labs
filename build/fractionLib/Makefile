@@ -117,25 +117,25 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-fractionLib/CMakeFiles/fraction.dir/rule:
-	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fractionLib/CMakeFiles/fraction.dir/rule
-.PHONY : fractionLib/CMakeFiles/fraction.dir/rule
+fractionLib/CMakeFiles/fractionLib.dir/rule:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fractionLib/CMakeFiles/fractionLib.dir/rule
+.PHONY : fractionLib/CMakeFiles/fractionLib.dir/rule
 
 # Convenience name for target.
-fraction: fractionLib/CMakeFiles/fraction.dir/rule
-.PHONY : fraction
+fractionLib: fractionLib/CMakeFiles/fractionLib.dir/rule
+.PHONY : fractionLib
 
 # fast build rule for target.
-fraction/fast:
-	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f fractionLib/CMakeFiles/fraction.dir/build.make fractionLib/CMakeFiles/fraction.dir/build
-.PHONY : fraction/fast
+fractionLib/fast:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f fractionLib/CMakeFiles/fractionLib.dir/build.make fractionLib/CMakeFiles/fractionLib.dir/build
+.PHONY : fractionLib/fast
 
 Fraction.o: Fraction.cpp.o
 .PHONY : Fraction.o
 
 # target to build an object file
 Fraction.cpp.o:
-	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f fractionLib/CMakeFiles/fraction.dir/build.make fractionLib/CMakeFiles/fraction.dir/Fraction.cpp.o
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f fractionLib/CMakeFiles/fractionLib.dir/build.make fractionLib/CMakeFiles/fractionLib.dir/Fraction.cpp.o
 .PHONY : Fraction.cpp.o
 
 Fraction.i: Fraction.cpp.i
@@ -143,7 +143,7 @@ Fraction.i: Fraction.cpp.i
 
 # target to preprocess a source file
 Fraction.cpp.i:
-	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f fractionLib/CMakeFiles/fraction.dir/build.make fractionLib/CMakeFiles/fraction.dir/Fraction.cpp.i
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f fractionLib/CMakeFiles/fractionLib.dir/build.make fractionLib/CMakeFiles/fractionLib.dir/Fraction.cpp.i
 .PHONY : Fraction.cpp.i
 
 Fraction.s: Fraction.cpp.s
@@ -151,7 +151,7 @@ Fraction.s: Fraction.cpp.s
 
 # target to generate assembly for a file
 Fraction.cpp.s:
-	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f fractionLib/CMakeFiles/fraction.dir/build.make fractionLib/CMakeFiles/fraction.dir/Fraction.cpp.s
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f fractionLib/CMakeFiles/fractionLib.dir/build.make fractionLib/CMakeFiles/fractionLib.dir/Fraction.cpp.s
 .PHONY : Fraction.cpp.s
 
 # Help Target
@@ -162,7 +162,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... fraction"
+	@echo "... fractionLib"
 	@echo "... Fraction.o"
 	@echo "... Fraction.i"
 	@echo "... Fraction.s"

@@ -1,17 +1,15 @@
-#include <iomanip>
 #include <iostream>
 #include "fractionLib/Fraction.h"
 
 int main() {
-    setlocale(LC_ALL, "Russian");
-
     try {
-        std::cout << "Введите дробь:" << std::endl;
+        setlocale(LC_ALL, "Russian");
+
+        std::cout << "Введите дробь: \n";
         Fraction z;
         std::cin >> z;
         std::cout << "z=" << z << std::endl;
-
-        std::cout << "Проверка конструкторов" << std::endl;
+        std::cout << std::endl << std::endl << "проверка конструкторов" << std::endl;
         Fraction fr1(10, 14), fr2;
         std::cout << "fr2=" << fr2 << std::endl;
         std::cout << "fr1=" << fr1 << std::endl;
@@ -22,8 +20,7 @@ int main() {
         double dbl = -1.25;
         Fraction f = dbl;
         std::cout << "f=" << f << std::endl;
-
-        std::cout << "Перегруженная операция сложения" << std::endl;
+        std::cout << std::endl << std::endl << "Проверка перегруженной операции сложения" << std::endl;
         y = x + z;
         std::cout << "y=" << y << std::endl;
         y += x;
@@ -44,13 +41,8 @@ int main() {
         std::cout << "y=" << y << std::endl;
         y += dbl + i + x;
         std::cout << "y=" << y << std::endl;
-    } catch (const std::invalid_argument& e) {
-        std::cerr << "\nОшибка ввода: " << e.what() << std::endl;
-        return 1;
-    } catch (...) {
-        std::cerr << "\nНеизвестная ошибка" << std::endl;
-        return 2;
+        return 0;
+    } catch (std::invalid_argument& e) {
+        std::cout << e.what() << std::endl;
     }
-
-    return 0;
 }

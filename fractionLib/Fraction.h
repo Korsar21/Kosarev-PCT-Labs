@@ -2,40 +2,35 @@
 #define FRACTION_H
 
 #include <iostream>
-#include <stdexcept>
-#include <string>
 
 class Fraction {
 private:
-    int m_numerator;
-    int m_denominator;
+    int numerator;
+    int denominator;
 
-    void reduce();
-    int gcd(int a, int b) const;
-    void normalize();
-    static bool isValidFractionString(const char* str);
+    void simplify();
+    static int gcd(int a, int b);
 
 public:
-    Fraction(int num = 0, int denom = 1);
-    Fraction(const Fraction& other);
+   // Fraction();
+    Fraction(int num=0, int den = 1);
     Fraction(const char* str);
-    explicit Fraction(double value, int nDec = 4);
+    Fraction(double d);
 
-    friend std::ostream& operator<<(std::ostream& os, const Fraction& frac);
-    friend std::istream& operator>>(std::istream& is, Fraction& frac);
+    friend std::ostream& operator<<(std::ostream& os, const Fraction& f);
+    friend std::istream& operator>>(std::istream& is, Fraction& f);
 
     Fraction operator+(const Fraction& other) const;
     Fraction& operator+=(const Fraction& other);
 
-    Fraction operator+(int value) const;
-    Fraction& operator+=(int value);
-    friend Fraction operator+(int value, const Fraction& frac);
+    Fraction operator+(int i) const;
+    Fraction& operator+=(int i);
 
-    Fraction operator+(double value) const;
-    Fraction& operator+=(double value);
-    friend Fraction operator+(double value, const Fraction& frac);
+    Fraction operator+(double d) const;
+    Fraction& operator+=(double d);
 
-    operator double() const;
+    friend Fraction operator+(int i, const Fraction& f);
+    friend Fraction operator+(double d, const Fraction& f);
 };
 
-#endif // FRACTION_H
+#endif
