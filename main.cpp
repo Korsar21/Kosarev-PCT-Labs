@@ -24,6 +24,25 @@ void Multipliers(int n, MyStack<int> &stack) {
     }
 }
 
+void ExtraTask() {
+    std::cout << "\nДемонстрация работы со стеками символов:\n";
+
+    std::cout << "\n1. Простой стек: ";
+    MyStack<char> stackABC;
+    stackABC.append('A');
+    stackABC.append('B');
+    stackABC.append('C');
+    std::cout << stackABC;
+
+    std::cout << "\n2. Стек с использованием конструктора копирования: ";
+    MyStack<char> stack2(stackABC);
+    std::cout << stack2;
+
+    std::cout << "\n3. Стек с использованием оператора присваивания: ";
+    MyStack<char> stack3;
+    stack3 = stackABC;
+    std::cout << stack3;
+}
 
 int main() {
     try {
@@ -56,7 +75,7 @@ int main() {
         std::cout << number << " = ";
         std::cout << tempStack;
 
-
+        ExtraTask();
 
         return 0;
     }
