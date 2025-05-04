@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles /home/korsar/Kosarev-PCT-Labs/build//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles /home/korsar/Kosarev-PCT-Labs/build/term//CMakeFiles/progress.marks
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 term/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 term/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,68 +103,80 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 term/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 term/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named lab_6
+# Convenience name for target.
+term/CMakeFiles/term.dir/rule:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 term/CMakeFiles/term.dir/rule
+.PHONY : term/CMakeFiles/term.dir/rule
 
-# Build rule for target.
-lab_6: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab_6
-.PHONY : lab_6
-
-# fast build rule for target.
-lab_6/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_6.dir/build.make CMakeFiles/lab_6.dir/build
-.PHONY : lab_6/fast
-
-#=============================================================================
-# Target rules for targets named term
-
-# Build rule for target.
-term: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 term
+# Convenience name for target.
+term: term/CMakeFiles/term.dir/rule
 .PHONY : term
 
 # fast build rule for target.
 term/fast:
-	$(MAKE) $(MAKESILENT) -f term/CMakeFiles/term.dir/build.make term/CMakeFiles/term.dir/build
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f term/CMakeFiles/term.dir/build.make term/CMakeFiles/term.dir/build
 .PHONY : term/fast
 
-main.o: main.cpp.o
-.PHONY : main.o
+polynomial.o: polynomial.cpp.o
+.PHONY : polynomial.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_6.dir/build.make CMakeFiles/lab_6.dir/main.cpp.o
-.PHONY : main.cpp.o
+polynomial.cpp.o:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f term/CMakeFiles/term.dir/build.make term/CMakeFiles/term.dir/polynomial.cpp.o
+.PHONY : polynomial.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+polynomial.i: polynomial.cpp.i
+.PHONY : polynomial.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_6.dir/build.make CMakeFiles/lab_6.dir/main.cpp.i
-.PHONY : main.cpp.i
+polynomial.cpp.i:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f term/CMakeFiles/term.dir/build.make term/CMakeFiles/term.dir/polynomial.cpp.i
+.PHONY : polynomial.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+polynomial.s: polynomial.cpp.s
+.PHONY : polynomial.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_6.dir/build.make CMakeFiles/lab_6.dir/main.cpp.s
-.PHONY : main.cpp.s
+polynomial.cpp.s:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f term/CMakeFiles/term.dir/build.make term/CMakeFiles/term.dir/polynomial.cpp.s
+.PHONY : polynomial.cpp.s
+
+term.o: term.cpp.o
+.PHONY : term.o
+
+# target to build an object file
+term.cpp.o:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f term/CMakeFiles/term.dir/build.make term/CMakeFiles/term.dir/term.cpp.o
+.PHONY : term.cpp.o
+
+term.i: term.cpp.i
+.PHONY : term.i
+
+# target to preprocess a source file
+term.cpp.i:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f term/CMakeFiles/term.dir/build.make term/CMakeFiles/term.dir/term.cpp.i
+.PHONY : term.cpp.i
+
+term.s: term.cpp.s
+.PHONY : term.s
+
+# target to generate assembly for a file
+term.cpp.s:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f term/CMakeFiles/term.dir/build.make term/CMakeFiles/term.dir/term.cpp.s
+.PHONY : term.cpp.s
 
 # Help Target
 help:
@@ -174,11 +186,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... lab_6"
 	@echo "... term"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... polynomial.o"
+	@echo "... polynomial.i"
+	@echo "... polynomial.s"
+	@echo "... term.o"
+	@echo "... term.i"
+	@echo "... term.s"
 .PHONY : help
 
 
@@ -190,6 +204,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

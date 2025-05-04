@@ -1,6 +1,6 @@
-/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/lab4.dir
+/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/lab_6.dir
 /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/edit_cache.dir
 /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/rebuild_cache.dir
-/home/korsar/Kosarev-PCT-Labs/build/MyStack/CMakeFiles/MyStack.dir
-/home/korsar/Kosarev-PCT-Labs/build/MyStack/CMakeFiles/edit_cache.dir
-/home/korsar/Kosarev-PCT-Labs/build/MyStack/CMakeFiles/rebuild_cache.dir
+/home/korsar/Kosarev-PCT-Labs/build/term/CMakeFiles/term.dir
+/home/korsar/Kosarev-PCT-Labs/build/term/CMakeFiles/edit_cache.dir
+/home/korsar/Kosarev-PCT-Labs/build/term/CMakeFiles/rebuild_cache.dir

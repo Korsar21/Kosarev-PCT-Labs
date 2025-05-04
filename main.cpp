@@ -1,85 +1,136 @@
 #include <iostream>
-#include <fstream>
-#include "MyStack/MyStack.h"
+#include <string>
+#include "term/term.h"
+#include "term/polynomial.h"
 
-void Multipliers(int n, MyStack<int> &stack) {
-    if (n < 0) {
-        throw std::invalid_argument("Некорректный ввод!");
-    }
-    if (n == 0) {
-        throw std::invalid_argument("Некорректный ввод!");
-    }
-    if (n == 1) {
-        stack.append(1);
-        return;
-    }
-    int divisor = 2;
-    while (n > 1) {
-        if (n % divisor == 0) {
-            stack.append(divisor);
-            n /= divisor;
-        } else {
-            divisor++;
-        }
-    }
+void demoTerm() {
+    std::cout << "Демонстрация класса Term:" << std::endl;
+
+    Term t1(-5, 2);  // -5x^2
+    Term t2(1, 2);  // x^2
+    Term t3(3, 5);  // 3x^5
+    Term t4(2, 1);  // 2x
+    Term t5(3);  // 3
+
+    std::cout << "t1 = " << t1 << std::endl;
+    std::cout << "t2 = " << t2 << std::endl;
+    std::cout << "t3 = " << t3 << std::endl;
+    std::cout << "t4 = " << t4 << std::endl;
+    std::cout << "t5 = " << t5 << std::endl;
+
+    Term t6 = t1 + t2;
+    std::cout << "t1 + t2 = " << t6 << std::endl;
 }
 
-void ExtraTask() {
-    std::cout << "\nДемонстрация работы со стеками символов:\n";
+void demoPolynomial() {
+    std::cout << "Демонстрация класса Polynomial" << std::endl;
 
-    std::cout << "\n1. Простой стек: ";
-    MyStack<char> stackABC;
-    stackABC.append('A');
-    stackABC.append('B');
-    stackABC.append('C');
-    std::cout << stackABC;
+    Polynomial p1;  // 0
+    Polynomial p2(3);  // 3
+    Polynomial p3(Term(5, 2));  // 5x^2
 
-    std::cout << "\n2. Стек с использованием конструктора копирования: ";
-    MyStack<char> stack2(stackABC);
-    std::cout << stack2;
+    std::cout << "p1 = " << p1 << std::endl;
+    std::cout << "p2 = " << p2 << std::endl;
+    std::cout << "p3 = " << p3 << std::endl;
 
-    std::cout << "\n3. Стек с использованием оператора присваивания: ";
-    MyStack<char> stack3;
-    stack3 = stackABC;
-    std::cout << stack3;
+    Polynomial p4 = p2 + p3;  // 3 + 5x^2
+    std::cout << "p3 + p2 = " << p4 << std::endl;
+
+    Polynomial p5 = p2 * p3;
+    std::cout << "p2 * p3 = " << p5 << std::endl;
+
+    p1 += p2;
+    std::cout << "p1 += p2: " << p1 << std::endl;
+
+    p1 *= p3;
+    std::cout << "p2 *= p3: " << p1 << std::endl;
 }
 
 int main() {
-    try {
-        std::cout << "Введите число: ";
-        int number;
-        std::cin >> number;
-        std::cout << std::endl;
-        MyStack<int> stack;
-        Multipliers(number, stack);
+    char choice1;
+    std::cout << "Выберите режим:" << std::endl;
+    std::cout << "1. Демонстрационный режим" << std::endl;
+    std::cout << "2. Интерактивный режим" << std::endl;
+    std::cout << "Выбор: ";
+    std::cin >> choice1;
 
-        MyStack<int> stackCopy = stack;
-        std::cout << number << " = ";
-        bool first = false;
-        while (!stack.any()) {
-            if (first) {
-                std::cout << " * ";
+    if (choice1 == '1') {
+        char choice2;
+        std::cout << "Выберите класс:" << std::endl;
+        std::cout << "1. Term" << std::endl;
+        std::cout << "2. Polynomial" << std::endl;
+        std::cout << "Выбор: ";
+        std::cin >> choice2;
+
+        if (choice2 == '1')
+            demoTerm();
+        else if (choice2 == '2')
+            demoPolynomial();
+
+    } else if (choice1 == '2') {
+        char choice2;
+        std::cout << "Выберите класс:" << std::endl;
+        std::cout << "1. Term" << std::endl;
+        std::cout << "2. Polynomial" << std::endl;
+        std::cout << "Выбор: ";
+        std::cin >> choice2;
+
+        if (choice2 == '1') {
+
+            std::cout << "Операции с term'ами" << std::endl;
+            std::cout << "Введите первый term: ";
+            Term t1;
+            std::cin >> t1;
+            std::cout << "Распознанный term: " << t1 << std::endl;
+
+            std::cout << "Введите второй term (с той же степенью): ";
+            Term t2;
+            std::cin >> t2;
+            std::cout << "Распознанный term: " << t2 << std::endl;
+
+            try {
+                Term t3 = t1 + t2;
+                std::cout << "t1 + t2: " << t3 << std::endl;
+            } catch (const std::invalid_argument& e) {
+                std::cout << "Ошибка: " << e.what() << std::endl;
             }
-            std::cout << stack.get();
-            stack.pop();
-            first = true;
+
+    } else if (choice2 == '2') {
+
+            std::cout << "Операции с полиномами" << std::endl;
+            std::cout << "Введите первый полином: " << std::endl;
+            std::cin.ignore();
+            Polynomial p1;
+            std::cin >> p1;
+            std::cout << "Распознанный полином: " << std::endl << p1 << std::endl;
+
+            std::cout << "Введите второй полином: " << std::endl;
+            Polynomial p2;
+            std::cin >> p2;
+            std::cout << "Распознанный полином: " << std::endl << p2 << std::endl;
+
+            Polynomial p3 = p1 + p2;
+            std::cout << "p3 = p1 + p2 = " << p3 << std::endl;
+
+
+            Polynomial p5 = p1 - p2;
+            std::cout << "p5 = p1 - p2 = " << p5 << std::endl;
+
+            Polynomial p4 = p1 * p2;
+            std::cout << "p4 = p1 * p2 = " << p4 << std::endl;
+
         }
-        std::cout << std::endl << std::endl;
-
-        MyStack<int> tempStack;
-        while (!stackCopy.any()) {
-            tempStack.append(stackCopy.get());
-            stackCopy.pop();
-        }
-
-        std::cout << number << " = ";
-        std::cout << tempStack;
-
-        ExtraTask();
-
-        return 0;
+    } else {
+        std::cout << "Неверный выбор!" << std::endl;
     }
-    catch (std::invalid_argument& e){
-        std::cout << e.what() << std::endl;
-    }
+
+    char choice;
+    std::cout << "Для продолжения нажмите 1" << std::endl;
+    std::cout << "Для выхода нажмите любую клавишу" << std::endl;
+    std::cout << "Выбор: ";
+    std::cin >> choice;
+    if (choice == '1')
+        return main();
+
+    return 0;
 }
