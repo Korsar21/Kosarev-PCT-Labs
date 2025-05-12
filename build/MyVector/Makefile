@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles /home/korsar/Kosarev-PCT-Labs/build//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles /home/korsar/Kosarev-PCT-Labs/build/MyVector//CMakeFiles/progress.marks
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyVector/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyVector/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,81 +103,56 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyVector/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyVector/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named lab5
+# Convenience name for target.
+MyVector/CMakeFiles/MyVector.dir/rule:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyVector/CMakeFiles/MyVector.dir/rule
+.PHONY : MyVector/CMakeFiles/MyVector.dir/rule
 
-# Build rule for target.
-lab5: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab5
-.PHONY : lab5
-
-# fast build rule for target.
-lab5/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5.dir/build.make CMakeFiles/lab5.dir/build
-.PHONY : lab5/fast
-
-#=============================================================================
-# Target rules for targets named MySet
-
-# Build rule for target.
-MySet: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MySet
-.PHONY : MySet
-
-# fast build rule for target.
-MySet/fast:
-	$(MAKE) $(MAKESILENT) -f MySet/CMakeFiles/MySet.dir/build.make MySet/CMakeFiles/MySet.dir/build
-.PHONY : MySet/fast
-
-#=============================================================================
-# Target rules for targets named MyVector
-
-# Build rule for target.
-MyVector: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyVector
+# Convenience name for target.
+MyVector: MyVector/CMakeFiles/MyVector.dir/rule
 .PHONY : MyVector
 
 # fast build rule for target.
 MyVector/fast:
-	$(MAKE) $(MAKESILENT) -f MyVector/CMakeFiles/MyVector.dir/build.make MyVector/CMakeFiles/MyVector.dir/build
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f MyVector/CMakeFiles/MyVector.dir/build.make MyVector/CMakeFiles/MyVector.dir/build
 .PHONY : MyVector/fast
 
-main.o: main.cpp.o
-.PHONY : main.o
+MyVector.o: MyVector.cpp.o
+.PHONY : MyVector.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5.dir/build.make CMakeFiles/lab5.dir/main.cpp.o
-.PHONY : main.cpp.o
+MyVector.cpp.o:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f MyVector/CMakeFiles/MyVector.dir/build.make MyVector/CMakeFiles/MyVector.dir/MyVector.cpp.o
+.PHONY : MyVector.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+MyVector.i: MyVector.cpp.i
+.PHONY : MyVector.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5.dir/build.make CMakeFiles/lab5.dir/main.cpp.i
-.PHONY : main.cpp.i
+MyVector.cpp.i:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f MyVector/CMakeFiles/MyVector.dir/build.make MyVector/CMakeFiles/MyVector.dir/MyVector.cpp.i
+.PHONY : MyVector.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+MyVector.s: MyVector.cpp.s
+.PHONY : MyVector.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5.dir/build.make CMakeFiles/lab5.dir/main.cpp.s
-.PHONY : main.cpp.s
+MyVector.cpp.s:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f MyVector/CMakeFiles/MyVector.dir/build.make MyVector/CMakeFiles/MyVector.dir/MyVector.cpp.s
+.PHONY : MyVector.cpp.s
 
 # Help Target
 help:
@@ -187,12 +162,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... MySet"
 	@echo "... MyVector"
-	@echo "... lab5"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... MyVector.o"
+	@echo "... MyVector.i"
+	@echo "... MyVector.s"
 .PHONY : help
 
 
@@ -204,6 +177,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

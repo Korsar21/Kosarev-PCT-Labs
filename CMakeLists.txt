@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.23)
 
-set(project "lab_6")
+set(project "lab5")
 project(${project})
 
 set(CMAKE_CXX_STANDARD 17)
@@ -8,7 +8,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(${project}_SOURCES
         main.cpp)
 
-add_subdirectory(term)
+add_subdirectory(MySet)
+add_subdirectory(MyVector)
 
 set(${project}_SOURCE_LIST
         ${${project}_SOURCES})
@@ -16,4 +17,5 @@ set(${project}_SOURCE_LIST
 add_executable(${project}
         ${${project}_SOURCE_LIST})
 
-target_link_libraries(${project} term)
+target_link_libraries(${project} MySet)
+target_link_libraries(${project} MyVector)
