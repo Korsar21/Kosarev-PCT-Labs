@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/korsar/Kosarev-PCT-Labs/build/MySet/cmake_install.cmake")
+  include("/home/korsar/Kosarev-PCT-Labs/build/PrintedEdition/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

@@ -1,306 +1,486 @@
 #ifndef MYVECTOR_H
 #define MYVECTOR_H
-
 #include <iostream>
-#include <stdexcept>
-
-namespace char_utils {
-    inline size_t strlen(const char* str) {
-        if (!str) return 0;
-        size_t len = 0;
-        while (str[len]) len++;
-        return len;
-    }
-
-    inline char* copy_cstr(const char* src) {
-        if (!src) return nullptr;
-        char* dst = new char[strlen(src) + 1];
-        size_t i = 0;
-        while (src[i]) {
-            dst[i] = src[i];
-            i++;
-        }
-        dst[i] = '\0';
-        return dst;
-    }
-
-    inline void delete_cstr(char* str) {
-        delete[] str;
-    }
-
-    inline bool equal_cstr(const char* a, const char* b) {
-        if (!a && !b) return true;
-        if (!a || !b) return false;
-        size_t i = 0;
-        while (a[i] && b[i] && a[i] == b[i]) i++;
-        return a[i] == b[i];
-    }
-
-    inline int strcmp(const char* a, const char* b) {
-        if (!a && !b) return 0;
-        if (!a) return -1;
-        if (!b) return 1;
-
-        size_t i = 0;
-        while (a[i] && b[i]) {
-            if (a[i] < b[i]) return -1;
-            if (a[i] > b[i]) return 1;
-            i++;
-        }
-
-        if (!a[i] && !b[i]) return 0;
-        if (!a[i]) return -1; // a короче
-        return 1; // b короче
-    }
-
-    // Сравнение "меньше"
-    inline bool less_cstr(const char* a, const char* b) {
-        return strcmp(a, b) < 0;
-    }
-}
+#include <algorithm>
+#include <cstring>
+#include "MyStack.h" // Подключаем MyStack
 
 template <typename T = int>
 class MyVector {
 protected:
-    T* pdata;
-    size_t size;
-    size_t max_size;
+    MyStack<T> stack;  // Используем MyStack вместо массива
+    size_t size;       // Текущий размер
+    size_t max_size;   // Максимальный размер
 
-    void resize(size_t new_size) {
-        if (new_size < 1) new_size = 1;
-        T* new_data = new T[new_size];
-        for (size_t i = 0; i < size; i++) {
-            new_data[i] = pdata[i];
+    // Вспомогательная функция для получения элемента по индексу
+    T getAt(size_t index) const {
+        if(index >= size) throw std::out_of_range("Index out of range");
+
+        MyStack<T> tempStack = stack; // Создаем копию стека
+
+        // Извлекаем элементы до нужного индекса
+        for(size_t i = 0; i < size - index - 1; ++i) {
+            tempStack.pop();
         }
-        delete[] pdata;
-        pdata = new_data;
-        max_size = new_size;
+
+        return tempStack.get();
     }
 
 public:
-    MyVector(size_t initial_size = 1) : size(0), max_size(initial_size) {
-        pdata = new T[max_size];
-    }
+    // Конструкторы
+    MyVector(size_t initial_size = 1) : size(0), max_size(initial_size) {}
 
     MyVector(const T& first_element) : size(1), max_size(1) {
-        pdata = new T[1];
-        pdata[0] = first_element;
+        stack.append(first_element);
     }
 
     MyVector(const MyVector& other) : size(other.size), max_size(other.max_size) {
-        pdata = new T[max_size];
-        for (size_t i = 0; i < size; i++) {
-            pdata[i] = other.pdata[i];
+        // Копируем элементы из other.stack в правильном порядке
+        MyStack<T> temp;
+        MyStack<T> otherCopy = other.stack;
+
+        while(!otherCopy.any()) {
+            temp.append(otherCopy.get());
+            otherCopy.pop();
+        }
+
+        while(!temp.any()) {
+            stack.append(temp.get());
+            temp.pop();
         }
     }
 
     virtual ~MyVector() {
-        delete[] pdata;
+        while(!stack.any()) {
+            stack.pop();
+        }
     }
 
     MyVector& operator=(const MyVector& other) {
-        if (this == &other) return *this;
-        delete[] pdata;
+        if(this == &other) return *this;
+
+        // Очищаем текущий стек
+        while(!stack.any()) {
+            stack.pop();
+        }
+
         size = other.size;
         max_size = other.max_size;
-        pdata = new T[max_size];
-        for (size_t i = 0; i < size; i++) {
-            pdata[i] = other.pdata[i];
+
+        // Копируем элементы из other.stack в правильном порядке
+        MyStack<T> temp;
+        MyStack<T> otherCopy = other.stack;
+
+        while(!otherCopy.any()) {
+            temp.append(otherCopy.get());
+            otherCopy.pop();
         }
+
+        while(!temp.any()) {
+            stack.append(temp.get());
+            temp.pop();
+        }
+
         return *this;
     }
 
     virtual void add_element(const T& element) {
-        if (size >= max_size) resize(max_size * 2);
-        pdata[size++] = element;
+        // Добавляем элемент в конец вектора (в начало стека)
+        MyStack<T> temp;
+
+        while(!stack.any()) {
+            temp.append(stack.get());
+            stack.pop();
+        }
+
+        stack.append(element);
+
+        while(!temp.any()) {
+            stack.append(temp.get());
+            temp.pop();
+        }
+
+        size++;
+        if(size > max_size) max_size = size;
     }
 
     void delete_element(size_t index) {
-        if (index >= size) return;
-        for (size_t i = index; i < size - 1; ++i) {
-            pdata[i] = pdata[i + 1];
+        if(index >= size) return;
+
+        MyStack<T> temp;
+        size_t current = 0;
+
+        while(!stack.any()) {
+            T value = stack.get();
+            stack.pop();
+
+            if(current != size - index - 1) {
+                temp.append(value);
+            }
+            current++;
         }
+
         size--;
-        if (size < max_size / 4 && max_size > 1) resize(max_size / 2);
+
+        while(!temp.any()) {
+            stack.append(temp.get());
+            temp.pop();
+        }
+
+        if(size < max_size / 4 && max_size > 1) max_size /= 2;
     }
 
     int find(const T& element) const {
-        for (size_t i = 0; i < size; ++i) {
-            if (pdata[i] == element) return i;
+        for(size_t i = 0; i < size; ++i) {
+            if(getAt(i) == element) {
+                return i;
+            }
         }
+
         return -1;
     }
 
-    T& operator[](size_t index) {
-        if (index >= size) throw std::out_of_range("Index out of range");
-        return pdata[index];
-    }
+    class ElementProxy {
+    private:
+        MyVector& vector;
+        size_t index;
 
-    const T& operator[](size_t index) const {
-        if (index >= size) throw std::out_of_range("Index out of range");
-        return pdata[index];
-    }
+    public:
+        ElementProxy(MyVector& vec, size_t idx) : vector(vec), index(idx) {}
 
-    template <int>
-    void sort() {
-        for (size_t i = 0; i < size; i++) {
-            int maxx = i;
-            for (size_t ii = i; ii < size; ii++){
-                if (pdata[maxx] < pdata[ii]) {
-                    maxx = ii;
-                }
+        ElementProxy& operator=(const T& value) {
+            // Создаем временный массив
+            T* temp = new T[vector.size];
+
+            // Копируем элементы в массив
+            for(size_t i = 0; i < vector.size; ++i) {
+                temp[i] = vector.getAt(i);
             }
-            T c = pdata[i];
-            pdata[i] = pdata[maxx];
-            pdata[maxx] = c;
+
+            // Изменяем нужный элемент
+            temp[index] = value;
+
+            // Очищаем стек
+            while(!vector.stack.any()) {
+                vector.stack.pop();
+            }
+
+            // Восстанавливаем стек с измененным элементом
+            for(int i = vector.size - 1; i >= 0; --i) {
+                vector.stack.append(temp[i]);
+            }
+
+            delete[] temp;
+
+            return *this;
         }
+
+        operator T() const {
+            return vector.getAt(index);
+        }
+    };
+
+    ElementProxy operator[](size_t index) {
+        if(index >= size) throw std::out_of_range("Index out of range");
+        return ElementProxy(*this, index);
     }
 
-    template <const char*>
+    const T operator[](size_t index) const {
+        return getAt(index);
+    }
+
     void sort() {
-        for (size_t i = 0; i < size - 1; i++) {
-            for (size_t ii = 0; ii < size - i - 1; ii++) {
-                if (char_utils::strcmp(pdata[ii], pdata[ii + 1]) > 0) {
-                    T temp = pdata[ii];
-                    pdata[ii] = pdata[ii + 1];
-                    pdata[ii + 1] = temp;
-                }
-            }
+        // Извлекаем элементы в массив
+        T* temp = new T[size];
+
+        for(size_t i = 0; i < size; ++i) {
+            temp[i] = getAt(i);
         }
+
+        // Сортируем
+        std::sort(temp, temp + size);
+
+        // Очищаем стек
+        while(!stack.any()) {
+            stack.pop();
+        }
+
+        // Возвращаем элементы в стек
+        for(int i = size - 1; i >= 0; --i) {
+            stack.append(temp[i]);
+        }
+
+        delete[] temp;
     }
 
     size_t get_size() const { return size; }
     size_t get_max_size() const { return max_size; }
 };
 
-template <>
+// Специализация для int
+template<>
+void MyVector<int>::add_element(const int& element) {
+    // Добавляем элемент в конец вектора (в начало стека)
+    MyStack<int> temp;
+
+    while(!stack.any()) {
+        temp.append(stack.get());
+        stack.pop();
+    }
+
+    stack.append(element);
+
+    while(!temp.any()) {
+        stack.append(temp.get());
+        temp.pop();
+    }
+
+    size++;
+    if(size > max_size) max_size = size;
+}
+
+// Специализация для char*
+template<>
 class MyVector<char*> {
 protected:
-    char** pdata;
-    size_t size;
-    size_t max_size;
+    MyStack<char*> stack;  // Основной стек
+    size_t size;           // Текущий размер
+    size_t max_size;       // Максимальный размер
 
-    void resize(size_t new_size) {
-        if (new_size < 1) new_size = 1;
-        char** new_data = new char*[new_size];
-        for (size_t i = 0; i < size; i++) {
-            new_data[i] = pdata[i];
-        }
-        delete[] pdata;
-        pdata = new_data;
-        max_size = new_size;
-    }
+    char* getAt(size_t index) const {
+        if(index >= size) throw std::out_of_range("Index out of range");
 
-    void clear() {
-        for (size_t i = 0; i < size; ++i) {
-            char_utils::delete_cstr(pdata[i]);
-        }
-        delete[] pdata;
-    }
+        MyStack<char*> tempStack = stack;
 
-    void copy_from(const MyVector& other) {
-        size = other.size;
-        max_size = other.max_size;
-        pdata = new char*[max_size];
-        for (size_t i = 0; i < size; ++i) {
-            pdata[i] = char_utils::copy_cstr(other.pdata[i]);
+        for(size_t i = 0; i < size - index - 1; ++i) {
+            tempStack.pop();
         }
+
+        return tempStack.get();
     }
 
 public:
-    MyVector(size_t initial_size = 1) : size(0), max_size(initial_size) {
-        pdata = new char*[max_size];
-    }
+    MyVector(size_t initial_size = 1) : size(0), max_size(initial_size) {}
 
     MyVector(const char* str) : size(1), max_size(1) {
-        pdata = new char*[1];
-        pdata[0] = char_utils::copy_cstr(str);
+        char* copy = new char[strlen(str) + 1];
+        strcpy(copy, str);
+        stack.append(copy);
     }
 
-    MyVector(const MyVector& other) {
-        copy_from(other);
+    MyVector(const MyVector& other) : size(other.size), max_size(other.max_size) {
+        MyStack<char*> temp;
+        MyStack<char*> otherCopy = other.stack;
+
+        while(!otherCopy.any()) {
+            char* str = otherCopy.get();
+            char* copy = new char[strlen(str) + 1];
+            strcpy(copy, str);
+            temp.append(copy);
+            otherCopy.pop();
+        }
+
+        while(!temp.any()) {
+            stack.append(temp.get());
+            temp.pop();
+        }
     }
 
     ~MyVector() {
-        clear();
+        while(!stack.any()) {
+            char* str = stack.get();
+            delete[] str;
+            stack.pop();
+        }
     }
 
     MyVector& operator=(const MyVector& other) {
-        if (this == &other) return *this;
-        clear();
-        copy_from(other);
+        if(this == &other) return *this;
+
+        while(!stack.any()) {
+            char* str = stack.get();
+            delete[] str;
+            stack.pop();
+        }
+
+        size = other.size;
+        max_size = other.max_size;
+
+        MyStack<char*> temp;
+        MyStack<char*> otherCopy = other.stack;
+
+        while(!otherCopy.any()) {
+            char* str = otherCopy.get();
+            char* copy = new char[strlen(str) + 1];
+            strcpy(copy, str);
+            temp.append(copy);
+            otherCopy.pop();
+        }
+
+        while(!temp.any()) {
+            stack.append(temp.get());
+            temp.pop();
+        }
+
         return *this;
     }
 
     void add_element(const char* element) {
-        if (size >= max_size) resize(max_size * 2);
-        pdata[size++] = char_utils::copy_cstr(element);
+        char* copy = new char[strlen(element) + 1];
+        strcpy(copy, element);
+
+        MyStack<char*> temp;
+
+        while(!stack.any()) {
+            temp.append(stack.get());
+            stack.pop();
+        }
+
+        stack.append(copy);
+
+        while(!temp.any()) {
+            stack.append(temp.get());
+            temp.pop();
+        }
+
+        size++;
+        if(size > max_size) max_size = size;
     }
 
     void delete_element(size_t index) {
-        if (index >= size) return;
-        char_utils::delete_cstr(pdata[index]);
-        for (size_t i = index; i < size - 1; ++i) {
-            pdata[i] = pdata[i + 1];
+        if(index >= size) return;
+
+        MyStack<char*> temp;
+        size_t current = 0;
+
+        while(!stack.any()) {
+            char* value = stack.get();
+            stack.pop();
+
+            if(current != size - index - 1) {
+                temp.append(value);
+            } else {
+                delete[] value;
+            }
+            current++;
         }
+
         size--;
-        if (size < max_size / 4 && max_size > 1) resize(max_size / 2);
+
+        while(!temp.any()) {
+            stack.append(temp.get());
+            temp.pop();
+        }
+
+        if(size < max_size / 4 && max_size > 1) max_size /= 2;
     }
 
     int find(const char* element) const {
-        for (size_t i = 0; i < size; ++i) {
-            if (char_utils::equal_cstr(pdata[i], element)) return i;
+        for(size_t i = 0; i < size; ++i) {
+            char* current = getAt(i);
+            if(strcmp(current, element) == 0) {
+                return i;
+            }
         }
+
         return -1;
     }
 
-    char* operator[](size_t index) {
-        if (index >= size) throw std::out_of_range("Index out of range");
-        return pdata[index];
+    class ElementProxy {
+    private:
+        MyVector& vector;
+        size_t index;
+
+    public:
+        ElementProxy(MyVector& vec, size_t idx) : vector(vec), index(idx) {}
+
+        ElementProxy& operator=(const char* value) {
+            char** temp = new char*[vector.size];
+
+            for(size_t i = 0; i < vector.size; ++i) {
+                char* str = vector.getAt(i);
+                if(i == index) {
+                    temp[i] = new char[strlen(value) + 1];
+                    strcpy(temp[i], value);
+                } else {
+                    temp[i] = new char[strlen(str) + 1];
+                    strcpy(temp[i], str);
+                }
+            }
+
+            while(!vector.stack.any()) {
+                char* str = vector.stack.get();
+                delete[] str;
+                vector.stack.pop();
+            }
+
+            for(int i = vector.size - 1; i >= 0; --i) {
+                vector.stack.append(temp[i]);
+            }
+
+            delete[] temp;
+
+            return *this;
+        }
+
+        operator char*() const {
+            return vector.getAt(index);
+        }
+    };
+
+    ElementProxy operator[](size_t index) {
+        if(index >= size) throw std::out_of_range("Index out of range");
+        return ElementProxy(*this, index);
     }
 
     const char* operator[](size_t index) const {
-        if (index >= size) throw std::out_of_range("Index out of range");
-        return pdata[index];
+        return getAt(index);
     }
 
-    template <int>
     void sort() {
-        for (size_t i = 0; i < size; i++) {
-            int maxx = i;
-            for (size_t ii = i; ii < size; ii++){
-                if (char_utils::strcmp(pdata[maxx], pdata[ii]) < 0) {
-                    maxx = ii;
-                }
-            }
-            char* c = pdata[i];
-            pdata[i] = pdata[maxx];
-            pdata[maxx] = c;
-        }
-    }
+        char** temp = new char*[size];
 
-    template <const char*>
-    void sort() {
-        for (size_t i = 0; i < size - 1; i++) {
-            for (size_t ii = 0; ii < size - i - 1; ii++) {
-                if (char_utils::strcmp(pdata[ii], pdata[ii + 1]) > 0) {
-                    char* temp = pdata[ii];
-                    pdata[ii] = pdata[ii + 1];
-                    pdata[ii + 1] = temp;
-                }
-            }
+        for(size_t i = 0; i < size; ++i) {
+            char* str = getAt(i);
+            temp[i] = new char[strlen(str) + 1];
+            strcpy(temp[i], str);
         }
+
+        std::sort(temp, temp + size, [](const char* a, const char* b) {
+            return strcmp(a, b) < 0;
+        });
+
+        while(!stack.any()) {
+            char* str = stack.get();
+            delete[] str;
+            stack.pop();
+        }
+
+        for(int i = size - 1; i >= 0; --i) {
+            stack.append(temp[i]);
+        }
+
+        delete[] temp;
     }
 
     size_t get_size() const { return size; }
     size_t get_max_size() const { return max_size; }
 };
 
-template <typename T>
-std::ostream& operator<<(std::ostream& os, const MyVector<T>& vec) {
+// Сохраняем операторы вывода
+std::ostream& operator<<(std::ostream& os, const MyVector<int>& vec) {
     os << "\n{";
-    for (size_t i = 0; i < vec.get_size(); ++i) {
-        if (i > 0) os << ", ";
+    for(size_t i = 0; i < vec.get_size(); ++i) {
+        if(i > 0) os << ", ";
+        os << vec[i];
+    }
+    return os << "}\n";
+}
+
+std::ostream& operator<<(std::ostream& os, const MyVector<char*>& vec) {
+    os << "\n{";
+    for(size_t i = 0; i < vec.get_size(); ++i) {
+        if(i > 0) os << ", ";
         os << vec[i];
     }
     return os << "}\n";

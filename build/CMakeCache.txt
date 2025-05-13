@@ -148,7 +148,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=lab5
+CMAKE_PROJECT_NAME:STATIC=lab7
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -216,31 +216,31 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Value Computed by CMake
-MySet_BINARY_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs/build/MySet
+MyStack_BINARY_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs/build/MyVector
 
 //Value Computed by CMake
-MySet_IS_TOP_LEVEL:STATIC=OFF
+MyStack_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-MySet_SOURCE_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs/MySet
+MyStack_SOURCE_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs/MyVector
 
 //Value Computed by CMake
-MyVector_BINARY_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs/build/MyVector
+PrintedEdition_BINARY_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs/build/PrintedEdition
 
 //Value Computed by CMake
-MyVector_IS_TOP_LEVEL:STATIC=OFF
+PrintedEdition_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-MyVector_SOURCE_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs/MyVector
+PrintedEdition_SOURCE_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs/PrintedEdition
 
 //Value Computed by CMake
-lab5_BINARY_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs/build
+lab7_BINARY_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs/build
 
 //Value Computed by CMake
-lab5_IS_TOP_LEVEL:STATIC=ON
+lab7_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-lab5_SOURCE_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs
+lab7_SOURCE_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs
 
 
 ########################

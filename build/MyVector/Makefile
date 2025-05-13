@@ -117,25 +117,49 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-MyVector/CMakeFiles/MyVector.dir/rule:
-	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyVector/CMakeFiles/MyVector.dir/rule
-.PHONY : MyVector/CMakeFiles/MyVector.dir/rule
+MyVector/CMakeFiles/MyStack.dir/rule:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyVector/CMakeFiles/MyStack.dir/rule
+.PHONY : MyVector/CMakeFiles/MyStack.dir/rule
 
 # Convenience name for target.
-MyVector: MyVector/CMakeFiles/MyVector.dir/rule
-.PHONY : MyVector
+MyStack: MyVector/CMakeFiles/MyStack.dir/rule
+.PHONY : MyStack
 
 # fast build rule for target.
-MyVector/fast:
-	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f MyVector/CMakeFiles/MyVector.dir/build.make MyVector/CMakeFiles/MyVector.dir/build
-.PHONY : MyVector/fast
+MyStack/fast:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f MyVector/CMakeFiles/MyStack.dir/build.make MyVector/CMakeFiles/MyStack.dir/build
+.PHONY : MyStack/fast
+
+MyStack.o: MyStack.cpp.o
+.PHONY : MyStack.o
+
+# target to build an object file
+MyStack.cpp.o:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f MyVector/CMakeFiles/MyStack.dir/build.make MyVector/CMakeFiles/MyStack.dir/MyStack.cpp.o
+.PHONY : MyStack.cpp.o
+
+MyStack.i: MyStack.cpp.i
+.PHONY : MyStack.i
+
+# target to preprocess a source file
+MyStack.cpp.i:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f MyVector/CMakeFiles/MyStack.dir/build.make MyVector/CMakeFiles/MyStack.dir/MyStack.cpp.i
+.PHONY : MyStack.cpp.i
+
+MyStack.s: MyStack.cpp.s
+.PHONY : MyStack.s
+
+# target to generate assembly for a file
+MyStack.cpp.s:
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f MyVector/CMakeFiles/MyStack.dir/build.make MyVector/CMakeFiles/MyStack.dir/MyStack.cpp.s
+.PHONY : MyStack.cpp.s
 
 MyVector.o: MyVector.cpp.o
 .PHONY : MyVector.o
 
 # target to build an object file
 MyVector.cpp.o:
-	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f MyVector/CMakeFiles/MyVector.dir/build.make MyVector/CMakeFiles/MyVector.dir/MyVector.cpp.o
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f MyVector/CMakeFiles/MyStack.dir/build.make MyVector/CMakeFiles/MyStack.dir/MyVector.cpp.o
 .PHONY : MyVector.cpp.o
 
 MyVector.i: MyVector.cpp.i
@@ -143,7 +167,7 @@ MyVector.i: MyVector.cpp.i
 
 # target to preprocess a source file
 MyVector.cpp.i:
-	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f MyVector/CMakeFiles/MyVector.dir/build.make MyVector/CMakeFiles/MyVector.dir/MyVector.cpp.i
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f MyVector/CMakeFiles/MyStack.dir/build.make MyVector/CMakeFiles/MyStack.dir/MyVector.cpp.i
 .PHONY : MyVector.cpp.i
 
 MyVector.s: MyVector.cpp.s
@@ -151,7 +175,7 @@ MyVector.s: MyVector.cpp.s
 
 # target to generate assembly for a file
 MyVector.cpp.s:
-	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f MyVector/CMakeFiles/MyVector.dir/build.make MyVector/CMakeFiles/MyVector.dir/MyVector.cpp.s
+	cd /home/korsar/Kosarev-PCT-Labs/build && $(MAKE) $(MAKESILENT) -f MyVector/CMakeFiles/MyStack.dir/build.make MyVector/CMakeFiles/MyStack.dir/MyVector.cpp.s
 .PHONY : MyVector.cpp.s
 
 # Help Target
@@ -162,7 +186,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... MyVector"
+	@echo "... MyStack"
+	@echo "... MyStack.o"
+	@echo "... MyStack.i"
+	@echo "... MyStack.s"
 	@echo "... MyVector.o"
 	@echo "... MyVector.i"
 	@echo "... MyVector.s"

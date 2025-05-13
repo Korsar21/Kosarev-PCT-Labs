@@ -1,0 +1,2 @@
+/usr/bin/ar qc libPrintedEdition.a CMakeFiles/PrintedEdition.dir/PrintedEdition.cpp.o CMakeFiles/PrintedEdition.dir/Magazine.cpp.o CMakeFiles/PrintedEdition.dir/Book.cpp.o CMakeFiles/PrintedEdition.dir/Textbook.cpp.o CMakeFiles/PrintedEdition.dir/ContainerFunctions.cpp.o
+/usr/bin/ranlib libPrintedEdition.a
