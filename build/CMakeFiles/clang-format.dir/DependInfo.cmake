@@ -8,8 +8,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/korsar/Kosarev-PCT-Labs/lib/stack.cpp" "CMakeFiles/lab7.dir/lib/stack.cpp.o" "gcc" "CMakeFiles/lab7.dir/lib/stack.cpp.o.d"
-  "/home/korsar/Kosarev-PCT-Labs/main_l7.cpp" "CMakeFiles/lab7.dir/main_l7.cpp.o" "gcc" "CMakeFiles/lab7.dir/main_l7.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

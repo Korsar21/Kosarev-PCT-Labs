@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/home/korsar/Kosarev-PCT-Labs/lib -I/home/korsar/Kosarev-PCT-Labs/include
 
-CXX_FLAGS = 
+CXX_FLAGS = -std=gnu++20 -Wall -Wextra -Wpedantic
 

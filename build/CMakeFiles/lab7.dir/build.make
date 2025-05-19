@@ -69,33 +69,47 @@ include CMakeFiles/lab7.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/lab7.dir/flags.make
 
-CMakeFiles/lab7.dir/main.cpp.o: CMakeFiles/lab7.dir/flags.make
-CMakeFiles/lab7.dir/main.cpp.o: /home/korsar/Kosarev-PCT-Labs/main.cpp
-CMakeFiles/lab7.dir/main.cpp.o: CMakeFiles/lab7.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab7.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab7.dir/main.cpp.o -MF CMakeFiles/lab7.dir/main.cpp.o.d -o CMakeFiles/lab7.dir/main.cpp.o -c /home/korsar/Kosarev-PCT-Labs/main.cpp
+CMakeFiles/lab7.dir/main_l7.cpp.o: CMakeFiles/lab7.dir/flags.make
+CMakeFiles/lab7.dir/main_l7.cpp.o: /home/korsar/Kosarev-PCT-Labs/main_l7.cpp
+CMakeFiles/lab7.dir/main_l7.cpp.o: CMakeFiles/lab7.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab7.dir/main_l7.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab7.dir/main_l7.cpp.o -MF CMakeFiles/lab7.dir/main_l7.cpp.o.d -o CMakeFiles/lab7.dir/main_l7.cpp.o -c /home/korsar/Kosarev-PCT-Labs/main_l7.cpp
 
-CMakeFiles/lab7.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/lab7.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/korsar/Kosarev-PCT-Labs/main.cpp > CMakeFiles/lab7.dir/main.cpp.i
+CMakeFiles/lab7.dir/main_l7.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/lab7.dir/main_l7.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/korsar/Kosarev-PCT-Labs/main_l7.cpp > CMakeFiles/lab7.dir/main_l7.cpp.i
 
-CMakeFiles/lab7.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lab7.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/korsar/Kosarev-PCT-Labs/main.cpp -o CMakeFiles/lab7.dir/main.cpp.s
+CMakeFiles/lab7.dir/main_l7.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lab7.dir/main_l7.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/korsar/Kosarev-PCT-Labs/main_l7.cpp -o CMakeFiles/lab7.dir/main_l7.cpp.s
+
+CMakeFiles/lab7.dir/lib/stack.cpp.o: CMakeFiles/lab7.dir/flags.make
+CMakeFiles/lab7.dir/lib/stack.cpp.o: /home/korsar/Kosarev-PCT-Labs/lib/stack.cpp
+CMakeFiles/lab7.dir/lib/stack.cpp.o: CMakeFiles/lab7.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/lab7.dir/lib/stack.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab7.dir/lib/stack.cpp.o -MF CMakeFiles/lab7.dir/lib/stack.cpp.o.d -o CMakeFiles/lab7.dir/lib/stack.cpp.o -c /home/korsar/Kosarev-PCT-Labs/lib/stack.cpp
+
+CMakeFiles/lab7.dir/lib/stack.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/lab7.dir/lib/stack.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/korsar/Kosarev-PCT-Labs/lib/stack.cpp > CMakeFiles/lab7.dir/lib/stack.cpp.i
+
+CMakeFiles/lab7.dir/lib/stack.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lab7.dir/lib/stack.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/korsar/Kosarev-PCT-Labs/lib/stack.cpp -o CMakeFiles/lab7.dir/lib/stack.cpp.s
 
 # Object files for target lab7
 lab7_OBJECTS = \
-"CMakeFiles/lab7.dir/main.cpp.o"
+"CMakeFiles/lab7.dir/main_l7.cpp.o" \
+"CMakeFiles/lab7.dir/lib/stack.cpp.o"
 
 # External object files for target lab7
 lab7_EXTERNAL_OBJECTS =
 
-lab7: CMakeFiles/lab7.dir/main.cpp.o
+lab7: CMakeFiles/lab7.dir/main_l7.cpp.o
+lab7: CMakeFiles/lab7.dir/lib/stack.cpp.o
 lab7: CMakeFiles/lab7.dir/build.make
-lab7: PrintedEdition/libPrintedEdition.a
-lab7: libMyVector.a
 lab7: CMakeFiles/lab7.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable lab7"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable lab7"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lab7.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

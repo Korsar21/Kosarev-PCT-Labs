@@ -1,10 +1,4 @@
 /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/lab7.dir
-/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/MyVector.dir
+/home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/clang-format.dir
 /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/edit_cache.dir
 /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/rebuild_cache.dir
-/home/korsar/Kosarev-PCT-Labs/build/PrintedEdition/CMakeFiles/PrintedEdition.dir
-/home/korsar/Kosarev-PCT-Labs/build/PrintedEdition/CMakeFiles/edit_cache.dir
-/home/korsar/Kosarev-PCT-Labs/build/PrintedEdition/CMakeFiles/rebuild_cache.dir
-/home/korsar/Kosarev-PCT-Labs/build/MyVector/CMakeFiles/MyStack.dir
-/home/korsar/Kosarev-PCT-Labs/build/MyVector/CMakeFiles/edit_cache.dir
-/home/korsar/Kosarev-PCT-Labs/build/MyVector/CMakeFiles/rebuild_cache.dir
