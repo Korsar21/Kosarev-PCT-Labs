@@ -8,8 +8,6 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
   "/home/korsar/Kosarev-PCT-Labs/CMakeLists.txt"
-  "/home/korsar/Kosarev-PCT-Labs/MySet/CMakeLists.txt"
-  "/home/korsar/Kosarev-PCT-Labs/MyVector/CMakeLists.txt"
   "CMakeFiles/3.28.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.28.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.28.3/CMakeSystem.cmake"
@@ -42,13 +40,10 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
-  "MySet/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "MyVector/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/lab5.dir/DependInfo.cmake"
-  "MySet/CMakeFiles/MySet.dir/DependInfo.cmake"
-  "MyVector/CMakeFiles/MyVector.dir/DependInfo.cmake"
+  "CMakeFiles/lab8.dir/DependInfo.cmake"
+  "CMakeFiles/clang-format.dir/DependInfo.cmake"
   )

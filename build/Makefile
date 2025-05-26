@@ -117,50 +117,37 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named lab5
+# Target rules for targets named lab8
 
 # Build rule for target.
-lab5: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab5
-.PHONY : lab5
+lab8: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab8
+.PHONY : lab8
 
 # fast build rule for target.
-lab5/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5.dir/build.make CMakeFiles/lab5.dir/build
-.PHONY : lab5/fast
+lab8/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab8.dir/build.make CMakeFiles/lab8.dir/build
+.PHONY : lab8/fast
 
 #=============================================================================
-# Target rules for targets named MySet
+# Target rules for targets named clang-format
 
 # Build rule for target.
-MySet: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MySet
-.PHONY : MySet
+clang-format: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clang-format
+.PHONY : clang-format
 
 # fast build rule for target.
-MySet/fast:
-	$(MAKE) $(MAKESILENT) -f MySet/CMakeFiles/MySet.dir/build.make MySet/CMakeFiles/MySet.dir/build
-.PHONY : MySet/fast
-
-#=============================================================================
-# Target rules for targets named MyVector
-
-# Build rule for target.
-MyVector: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyVector
-.PHONY : MyVector
-
-# fast build rule for target.
-MyVector/fast:
-	$(MAKE) $(MAKESILENT) -f MyVector/CMakeFiles/MyVector.dir/build.make MyVector/CMakeFiles/MyVector.dir/build
-.PHONY : MyVector/fast
+clang-format/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/clang-format.dir/build.make CMakeFiles/clang-format.dir/build
+.PHONY : clang-format/fast
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5.dir/build.make CMakeFiles/lab5.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab8.dir/build.make CMakeFiles/lab8.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -168,7 +155,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5.dir/build.make CMakeFiles/lab5.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab8.dir/build.make CMakeFiles/lab8.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -176,8 +163,32 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5.dir/build.make CMakeFiles/lab5.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab8.dir/build.make CMakeFiles/lab8.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+tasks.o: tasks.cpp.o
+.PHONY : tasks.o
+
+# target to build an object file
+tasks.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab8.dir/build.make CMakeFiles/lab8.dir/tasks.cpp.o
+.PHONY : tasks.cpp.o
+
+tasks.i: tasks.cpp.i
+.PHONY : tasks.i
+
+# target to preprocess a source file
+tasks.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab8.dir/build.make CMakeFiles/lab8.dir/tasks.cpp.i
+.PHONY : tasks.cpp.i
+
+tasks.s: tasks.cpp.s
+.PHONY : tasks.s
+
+# target to generate assembly for a file
+tasks.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab8.dir/build.make CMakeFiles/lab8.dir/tasks.cpp.s
+.PHONY : tasks.cpp.s
 
 # Help Target
 help:
@@ -187,12 +198,14 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... MySet"
-	@echo "... MyVector"
-	@echo "... lab5"
+	@echo "... clang-format"
+	@echo "... lab8"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... tasks.o"
+	@echo "... tasks.i"
+	@echo "... tasks.s"
 .PHONY : help
 
 

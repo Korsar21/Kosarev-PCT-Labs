@@ -1,65 +1,27 @@
+// main.cpp
 #include <iostream>
-#include "MyVector/MyVector.h"
-#include "MySet/MySet.h"
+#include "tasks.h"
+#include <limits>
 
 int main() {
-    setlocale(LC_ALL, "Russian");
+    int choice;
+    std::cout << "Выберите номер задания (1-9): ";
+    std::cin >> choice;
 
-    MyVector<char*> v("Hello!");
-    v.add_element("こんにちは!");
-    v.add_element("こんにちは!");
-    v.add_element("Привет!");
-    v.add_element("Привет!");
-    v.add_element("Привет!");
-    std::cout << "Вектор v: " << v << std::endl;
-    v.add_element("Привет!");
-    v.add_element("Привет!");
-    v.add_element("Привет!");
-    std::cout << "Вектор v: " << v << std::endl;
-    MyVector<char*> v1 = v;
-    std::cout << "Вектор v1: " << v1 << std::endl;
-    for (int i = 0; i < MAX_SIZE; i++)
-        v1.delete_element(i);
-    std::cout << "Вектор v1: " << v1 << std::endl;
-    MySet s("Yes"), s1, s2;
-    s.add_element("Привет!");
-    s.add_element("No");
-    char *str = "Hello!";
-    s.add_element(str);
-    std::cout << "Множество s: " << s << std::endl;
-    s1.add_element("Cat");
-    s1.add_element("No");
-    s1.add_element("Привет!");
-    std::cout << "Множество s1: " << s1 << std::endl;
-    s2 = s1 - s;
-    std::cout << "Множество s2=s1-s: " << s2 << std::endl;
-    std::cout << "Множество s1: " << s1 << std::endl;
-    std::cout << "Множество s: " << s << std::endl;
-    s2 = s - s1;
-    std::cout << "Множество s2=s-s1: " << s2 << std::endl;
-    std::cout << "Множество s1: " << s1 << std::endl;
-    std::cout << "Множество s: " << s << std::endl;
-    s2 = s1 + s;
-    std::cout << "Множество s2=s1+s: " << s2 << std::endl;
-    std::cout << "Множество s1: " << s1 << std::endl;
-    std::cout << "Множество s: " << s << std::endl;
-    s2 = s1 * s;
-    std::cout << "Множество s2=s1*s: " << s2 << std::endl;
-    std::cout << "Множество s1: " << s1 << std::endl;
-    std::cout << "Множество s: " << s << std::endl;
-    MySet s3 = s2;
-    std::cout << "Множество s3=s2: " << s3 << std::endl;
-    if (s3 == s2)
-        std::cout << "Множество s3=s2\n";
-    else
-        std::cout << "Множество s3!=s2\n";
-    if (s3 == s1)
-        std::cout << "Множество s3=s1\n";
-    else
-        std::cout << "Множество s3!=s1\n";
-    if (s1 == s3)
-        std::cout << "Множество s1=s3\n";
-    else
-        std::cout << "Множество s1!=s3\n";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    switch (choice) {
+        case 1: task1(); break;
+        case 2: task2(); break;
+        case 3: task3(); break;
+        case 4: task4(); break;
+        case 5: task5(); break;
+        case 6: task6(); break;
+        case 7: task7(); break;
+        case 8: task8(); break;
+        case 9: task9(); break;
+        default:
+            std::cout << "Некорректный выбор. Пожалуйста, выберите от 1 до 9.\n";
+    }
     return 0;
 }

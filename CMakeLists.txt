@@ -1,21 +1,38 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.21.1)
+project(lab8)
 
-set(project "lab5")
-project(${project})
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
 
-set(CMAKE_CXX_STANDARD 17)
+set(SOURCES
+    main.cpp
+    tasks.cpp
+    Point.h
+    Planet.h
+)
 
-set(${project}_SOURCES
-        main.cpp)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-add_subdirectory(MySet)
-add_subdirectory(MyVector)
+add_executable(${PROJECT_NAME} ${SOURCES})
 
-set(${project}_SOURCE_LIST
-        ${${project}_SOURCES})
+target_compile_options(${PROJECT_NAME} PRIVATE
+    -Wall
+    -Wextra
+    -Werror
+    -Wpedantic
+)
 
-add_executable(${project}
-        ${${project}_SOURCE_LIST})
+if(ENABLE_DEBUG)
+    target_compile_options(${PROJECT_NAME} PRIVATE -g)
+endif()
 
-target_link_libraries(${project} MySet)
-target_link_libraries(${project} MyVector)
+file(GLOB_RECURSE ALL_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/*.h
+)
+
+add_custom_target(
+    clang-format
+    COMMAND clang-format --dry-run -Werror ${ALL_SOURCES}
+)

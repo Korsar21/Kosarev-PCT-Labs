@@ -148,7 +148,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=lab5
+CMAKE_PROJECT_NAME:STATIC=lab8
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -216,24 +216,6 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Value Computed by CMake
-MySet_BINARY_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs/build/MySet
-
-//Value Computed by CMake
-MySet_IS_TOP_LEVEL:STATIC=OFF
-
-//Value Computed by CMake
-MySet_SOURCE_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs/MySet
-
-//Value Computed by CMake
-MyVector_BINARY_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs/build/MyVector
-
-//Value Computed by CMake
-MyVector_IS_TOP_LEVEL:STATIC=OFF
-
-//Value Computed by CMake
-MyVector_SOURCE_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs/MyVector
-
-//Value Computed by CMake
 lab5_BINARY_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs/build
 
 //Value Computed by CMake
@@ -241,6 +223,15 @@ lab5_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 lab5_SOURCE_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs
+
+//Value Computed by CMake
+lab8_BINARY_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs/build
+
+//Value Computed by CMake
+lab8_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+lab8_SOURCE_DIR:STATIC=/home/korsar/Kosarev-PCT-Labs
 
 
 ########################
@@ -347,7 +338,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
