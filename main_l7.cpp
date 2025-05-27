@@ -90,7 +90,7 @@ int main() {
                 std::cout << "Введите название: ";
                 std::cin.getline(bufferName, 100);
 
-                std::cout << "Введите скорость: ";
+                std::cout << "Введите скорость (только числа): ";
                 int speed;
                 std::cin >> speed;
                 std::cin.ignore();
@@ -105,7 +105,7 @@ int main() {
                 std::cout << "Введите название: ";
                 std::cin.getline(bufferName, 100);
 
-                std::cout << "Введите скорость: ";
+                std::cout << "Введите скорость (только числа): ";
                 int speed;
                 std::cin >> speed;
                 std::cin.ignore();
@@ -120,7 +120,7 @@ int main() {
                 std::cout << "Введите название: ";
                 std::cin.getline(bufferName, 100);
 
-                std::cout << "Введите скорость: ";
+                std::cout << "Введите скорость (только числа): ";
                 int speed;
                 std::cin >> speed;
                 std::cin.ignore();
