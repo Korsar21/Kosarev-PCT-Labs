@@ -6,8 +6,8 @@ int main() {
     setlocale(LC_ALL, "Russian");
 
     MyVector<char*> v("Hello!");
-    v.add_element("こんにちは!");
-    v.add_element("こんにちは!");
+    v.add_element("Привет!");
+    v.add_element("Привет!");
     v.add_element("Привет!");
     v.add_element("Привет!");
     v.add_element("Привет!");
