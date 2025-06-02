@@ -67,7 +67,7 @@ include CMakeFiles/clang-format.dir/compiler_depend.make
 include CMakeFiles/clang-format.dir/progress.make
 
 CMakeFiles/clang-format:
-	clang-format --dry-run -Werror /home/korsar/Kosarev-PCT-Labs/Box.h /home/korsar/Kosarev-PCT-Labs/Inventory.h /home/korsar/Kosarev-PCT-Labs/Planet.h /home/korsar/Kosarev-PCT-Labs/Point.h /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/3.28.3/CompilerIdCXX/CMakeCXXCompilerId.cpp /home/korsar/Kosarev-PCT-Labs/include/Staff.h /home/korsar/Kosarev-PCT-Labs/main.cpp /home/korsar/Kosarev-PCT-Labs/tasks.cpp /home/korsar/Kosarev-PCT-Labs/tasks.h
+	clang-format --dry-run -Werror /home/korsar/Kosarev-PCT-Labs/Planet.h /home/korsar/Kosarev-PCT-Labs/Point.h /home/korsar/Kosarev-PCT-Labs/build/CMakeFiles/3.28.3/CompilerIdCXX/CMakeCXXCompilerId.cpp /home/korsar/Kosarev-PCT-Labs/main.cpp /home/korsar/Kosarev-PCT-Labs/tasks.cpp /home/korsar/Kosarev-PCT-Labs/tasks.h
 
 clang-format: CMakeFiles/clang-format
 clang-format: CMakeFiles/clang-format.dir/build.make
